@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aftermath Technologies
 
-## Getting Started
+> Serious AI systems. Built for automation, optimization, and GPT-powered dominance.
 
-First, run the development server:
+## 🔥 Live Demos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Estimate My Project](https://aftermathtech.com/estimator)
+- [Prompt War Room](https://aftermathtech.com/war-room)
+- [Service Match AI](https://aftermathtech.com/match-me)
+- [Portfolio](https://aftermathtech.com/portfolio)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧠 Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 14 App Router** — server components, edge functions
+- **Tailwind CSS** — clean, performant UI
+- **Framer Motion** — animated UX, no gimmicks
+- **OpenAI GPT-4 API** — intelligent backend
+- **Vercel** — deploy + CDN + domain
+- **Plausible Analytics** — no tracking garbage, full visibility
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 File Structure
 
-## Learn More
+/app
+/api/gpt/ → GPT endpoints (estimator, persona, matcher)
+/portfolio/ → interactive system case studies
+/estimator → real-time GPT project estimator
+/war-room → multi-persona GPT simulator
+/match-me → natural language intake → service match
+/public
+/demos → future product embeds
+/data
+/portfolio.ts → static portfolio source (adminless CMS)
+/styles
+globals.css → Tailwind base
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Env Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create `.env.local`:
 
-## Deploy on Vercel
+OPENAI_API_KEY=sk-<REDACTED>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
+
+1. Push to GitHub
+2. Deploy via [vercel.com](https://vercel.com)
+3. Set domain to `aftermathtech.com`
+4. Add env var
+5. Done
+
+## 🔒 No Templates. No Padding.
+
+This site doesn’t pitch. It performs.
+Every feature is an AI tool — not a brochure.
+
+---
+
+> Built by [moonrunnerkc](https://github.com/moonrunnerkc)
+> 🔗 [aftermathtech.com](https://aftermathtech.com)

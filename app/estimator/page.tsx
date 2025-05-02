@@ -1,7 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-
 
 export default function EstimatorPage() {
     const [input, setInput] = useState('');
@@ -29,17 +27,13 @@ export default function EstimatorPage() {
         placeholder="Describe your idea..."
         className="w-full h-32 p-4 bg-black border border-gray-700 rounded resize-none"
         />
-        <motion.button
-        onClick={getEstimate} // or match()
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ type: 'spring', stiffness: 250 }}
-    className="mt-4 px-6 py-2 bg-green-500 text-black font-bold rounded hover:bg-green-400"
-    disabled={loading}
-    >
-    {loading ? 'Thinking...' : 'Estimate'} // or 'Match Me'
-    </motion.button>
-
+        <button
+        onClick={getEstimate}
+        className="mt-4 px-6 py-2 bg-green-500 text-black font-bold rounded hover:bg-green-400"
+        disabled={loading}
+        >
+        {loading ? 'Thinking…' : 'Estimate'}
+        </button>
 
         {response && (
             <div className="mt-6 p-4 bg-gray-900 border border-gray-700 rounded whitespace-pre-wrap">
