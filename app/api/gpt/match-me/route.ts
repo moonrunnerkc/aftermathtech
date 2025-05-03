@@ -7,22 +7,21 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Missing input' }, { status: 400 });
     }
 
-    const prompt = `You're an AI systems strategist. A client just submitted this request:
+    const prompt = `You're an AI strategist matching clients to services.
 
+    Client said:
     "${input}"
 
-    Based on the input, match them to the best-fit service from this list:
-
+    Choose ONE match from this list:
     - GPT-powered automation
     - AI ad systems
     - AI eCommerce builder
     - AI content rewriting engine
     - Custom GPT agent development
 
-    You must return one match. No disclaimers. Be blunt. Only respond with the exact name of the matched service.`;
+    Respond ONLY with one of the above lines. No extras, no explanations.`;
 
-
-    const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -31,12 +30,24 @@ export async function POST(req: Request) {
         body: JSON.stringify({
             model: 'gpt-4',
             messages: [{ role: 'user', content: prompt }],
-            temperature: 0.6,
+            temperature: 0.3,
         }),
     });
 
-    const data = await gptRes.json();
-    const reply = data.choices?.[0]?.message?.content || 'No match found.';
+    const data = await res.json();
+    let reply = data.choices?.[0]?.message?.content?.trim();
+
+    const validMatches = [
+        'GPT-powered automation',
+        'AI ad systems',
+        'AI eCommerce builder',
+        'AI content rewriting engine',
+        'Custom GPT agent development',
+    ];
+
+    if (!validMatches.includes(reply)) {
+        reply = 'No match found.';
+    }
 
     return NextResponse.json({ reply });
 }
