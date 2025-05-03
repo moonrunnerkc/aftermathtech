@@ -5,9 +5,29 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
-const services = [
-    // ... same services array
+
+type Service = {
+    key: string;
+    title: string;
+    tagline: string;
+    description: string;
+    badge: string;
+};
+
+
+const services: Service[] = [
+    {
+        key: 'GPT-powered automation',
+        title: 'GPT-powered automation',
+        tagline: 'Eliminate bottlenecks with intelligent agents.',
+        description:
+        'Custom-built automations using GPT-4 for lead routing, onboarding flows, and backend workflows. You describe the bottleneck, we build the AI that removes it.',
+        badge: '#GPT-4 #Automation #NoCode',
+    },
+    // ... other services
 ];
+
+
 
 export default function Services() {
     const searchParams = useSearchParams();
