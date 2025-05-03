@@ -61,9 +61,10 @@ export async function POST(req: Request) {
 
         if (!match) {
             return NextResponse.json({
-                reply: `⚠️ No match found.\n\nRaw: ${reply}`,
+                reply: `⚠️ No match found.\n\nGPT said:\n"${reply}"\n\n(normalized: "${normalizedReply}")`,
             });
         }
+
 
         return NextResponse.json({
             redirect: `/services?match=${encodeURIComponent(match)}`,
