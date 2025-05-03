@@ -38,7 +38,8 @@ export async function POST(req: Request) {
 
     try {
         const data = JSON.parse(raw);
-        let reply = data.choices?.[0]?.message?.content?.trim();
+        const reply = data.choices?.[0]?.message?.content?.trim();
+        .[0]?.message?.content?.trim();
 
         const validMatches = [
             'GPT-powered automation',
