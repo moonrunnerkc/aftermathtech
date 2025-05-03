@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         }
 
         return NextResponse.json({ reply });
-    } catch (err) {
+    } catch {
         return NextResponse.json({ reply: `❌ Failed to parse GPT response:\n${raw}` });
     }
 }
