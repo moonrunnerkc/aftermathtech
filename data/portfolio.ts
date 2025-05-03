@@ -1,34 +1,60 @@
 export const projects = [
     {
-        slug: 'ad-copy-optimizer',
-        title: 'Ad Copy Optimizer',
-        summary: 'Rewrite and test ad variations with GPT-4.',
-        description: `This system ingests a brand or product description and outputs ad copy variations in multiple tones and formats.
-        It uses GPT-4 with prompt chaining to simulate A/B testing logic and user sentiment scoring.
+        slug: 'killgrid',
+        title: 'KillGrid — Autonomous Orbital Threat Detection',
+        summary: 'Detects satellite proximity threats, predicts collisions, and runs entirely containerized with a live dashboard.',
+        tech: ['Node.js', 'Docker', 'Realtime AI', 'Custom Dashboard'],
+        content: `
+        KillGrid is an autonomous orbital threat detection system.
 
-        **Stack:** Next.js, GPT-4 API, Tailwind`,
-        tech: ['GPT-4', 'Tailwind', 'OpenAI API'],
+        🔹 Detects real-time satellite proximity threats
+        🔹 Predicts future collisions (T+60s)
+        🔹 Fully containerized with a live, encrypted dashboard
+        🔹 Requires zero backend — runs anywhere
+
+        A live preview of the system is here:
+        🌐 [KillGrid Live](https://lnkd.in/g5p7qsk4)
+        `,
     },
     {
-        slug: 'quote-generator',
-        title: 'AI Quote Generator',
-        summary: 'Scoping engine that builds quote proposals from input.',
-        description: `Users describe what they want — this tool turns it into:
-        - Scope
-        - Tech Stack
-        - Estimated Time
-        - Price Range
+        slug: 'estimator',
+        title: 'Aftermath Estimator',
+        summary: 'GPT-powered tool that scopes projects from idea to MVP — estimates time, cost, stack, and skillset on the fly.',
+        tech: ['Next.js', 'GPT-4', 'Tailwind', 'API Routing'],
+        content: `
+        Aftermath Estimator is an AI tool that turns raw project ideas into scoped MVP builds.
 
-        **Stack:** GPT-4, Vercel Serverless`,
-        tech: ['GPT-4', 'Vercel Functions', 'Markdown'],
+        🔹 Estimates cost, time, stack, and skills needed
+        🔹 Uses GPT-4 with tuned system prompt
+        🔹 Fully responsive, real-time output
+        🔹 Powered by OpenAI's chat completions API
+        `,
     },
     {
-        slug: 'prompt-war-room',
-        title: 'Prompt War Room',
-        summary: 'Compare GPT personas side-by-side.',
-        description: `This tool creates split-screen output from multiple GPT system prompts. Great for testing tone, creativity, and interpretation.
+        slug: 'war-room',
+        title: 'Persona War Room',
+        summary: 'An AI testing ground that runs your prompt through strategist, visionary, and critic GPT personas.',
+        tech: ['Next.js', 'OpenAI API', 'Framer Motion', 'Custom Prompt Chains'],
+        content: `
+        The Persona War Room is a prompt evaluation battleground.
 
-        **Stack:** GPT-4, React State Engine`,
-        tech: ['GPT-4', 'App Router', 'Prompt Engineering'],
+        🔹 Submit any idea or question
+        🔹 GPT responds in 3 distinct personas: Strategist, Visionary, Critic
+        🔹 Built to test tone, argument strength, and AI-driven feedback loops
+        `,
+    },
+    {
+        slug: 'match-me',
+        title: 'Match Me GPT',
+        summary: 'Auto-suggests the most relevant service based on your business need.',
+        tech: ['GPT-4', 'Next.js', 'SearchParams', 'Dynamic Redirects'],
+        content: `
+        Match Me is a GPT-powered intake engine.
+
+        🔹 Asks what you're trying to do
+        🔹 GPT maps it to a specific service
+        🔹 Auto-redirects with scroll-to-highlight UI
+        🔹 Normalized fuzzy match and GPT validation
+        `,
     }
 ];
