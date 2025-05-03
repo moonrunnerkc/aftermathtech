@@ -7,7 +7,11 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Missing input' }, { status: 400 });
     }
 
-    const prompt = `You're a strategist for a GPT automation agency. A user described their business or idea and wants to know if GPT or automation can help. If there is any way AI could assist — such as customer service, scheduling, content, marketing, ecommerce — suggest the best-fit service from the following options:
+    const prompt = `You're an AI systems strategist. A client just submitted this request:
+
+    "${input}"
+
+    Based on the input, match them to the best-fit service from this list:
 
     - GPT-powered automation
     - AI ad systems
@@ -15,9 +19,7 @@ export async function POST(req: Request) {
     - AI content rewriting engine
     - Custom GPT agent development
 
-    Client input: "${input}"
-
-    Respond in 1–2 sentences. Be helpful and direct. If there's truly no match, say "No match found. Provide more Details."`;
+    You must return one match. No disclaimers. Be blunt. Only respond with the exact name of the matched service.`;
 
 
     const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
