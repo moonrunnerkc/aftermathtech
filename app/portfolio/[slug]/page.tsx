@@ -1,7 +1,14 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
+import { type Page } from 'next';
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export const generateStaticParams = async () => {
+    return projects.map((project) => ({
+        slug: project.slug,
+    }));
+};
+
+const Page: Page = async ({ params }) => {
     const project = projects.find((p) => p.slug === params.slug);
     if (!project) return notFound();
 
@@ -40,10 +47,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </article>
         </div>
     );
-}
+};
 
-export async function generateStaticParams() {
-    return projects.map((p) => ({ slug: p.slug }));
-}
-
-export const dynamicParams = true;
+export default Page;
