@@ -42,7 +42,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     );
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
     return projects.map((p) => ({ slug: p.slug }));
 }
 
+export const dynamicParams = true;
