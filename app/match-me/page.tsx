@@ -24,8 +24,8 @@ export default function MatchMePage() {
             } else {
                 alert('⚠️ Could not find a match.');
             }
-        } catch (err) {
-            alert('❌ GPT error.');
+        } catch {
+            alert('❌ GPT service failed.');
         } finally {
             setLoading(false);
         }
