@@ -1,9 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
 
 type Service = {
     key: string;
@@ -86,67 +84,45 @@ const services: Service[] = [
     },
 ];
 
-export default function ServicesPage() {
+export default function Services() {
+    const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const searchParams = useSearchParams();
     const selected = searchParams.get('match');
-    const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-    const [highlighted, setHighlighted] = useState<string | null>(null);
 
     useEffect(() => {
-        if (selected) {
-            console.log('Selected match:', selected);
+        if (!selected) return;
+
+        const el = scrollRefs.current[selected];
+        if (el) {
             setTimeout(() => {
-                const ref = scrollRefs.current[selected];
-                console.log('Scroll ref:', ref);
-                if (ref) {
-                    ref.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    setHighlighted(selected);
-                }
-            }, 500); // delay ensures DOM is ready
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
         }
     }, [selected]);
 
     return (
-        <div className="min-h-screen bg-black text-white p-8">
-        <h1 className="text-4xl font-bold mb-6">🚀 AI Services Built with Real GPT Integration</h1>
-        <p className="text-gray-400 mb-10 max-w-xl">
-        No slides. No fluff. Everything here is custom-coded, API-integrated, and built to perform. Choose your function, or ask what fits.
+        <div className="min-h-screen bg-black text-white px-6 py-12">
+        <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold mb-2">🔧 AI-Powered Services</h1>
+        <p className="text-gray-400 max-w-2xl mx-auto">
+        Every service here is GPT-integrated, container-ready, and battle-tested for deployment. If you don’t see what you need — prompt me.
         </p>
-
-        <div className="grid gap-8 sm:grid-cols-2">
-        {services.map((svc, idx) => {
-            const isHighlighted = highlighted === svc.key;
-            return (
-                <motion.div
-                key={idx}
-                ref={(el: HTMLDivElement | null) => {
-                    scrollRefs.current[svc.key] = el;
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className={`bg-gray-900 border rounded-xl p-6 transition ${
-                    isHighlighted
-                    ? 'border-green-500 ring-2 ring-green-400'
-                    : 'border-gray-700 hover:bg-gray-800'
-                }`}
-                >
-                <h2 className="text-2xl font-bold text-white">{svc.title}</h2>
-                <p className="text-green-400 mt-1">{svc.tagline}</p>
-                <p className="text-gray-300 mt-4 text-sm leading-relaxed">{svc.description}</p>
-                <p className="text-xs text-gray-500 mt-4">{svc.badge}</p>
-                </motion.div>
-            );
-        })}
         </div>
 
-        <div className="mt-12">
-        <Link
-        href="/match-me"
-        className="inline-block bg-green-500 text-black font-bold px-6 py-3 rounded hover:bg-green-400 transition"
-        >
-        Not sure what you need? Try Match Me
-        </Link>
+        <div className="grid gap-6 sm:grid-cols-2">
+        {services.map((svc) => (
+            <div
+            key={svc.key}
+            ref={(el) => (scrollRefs.current[svc.key] = el)}
+            className={`border border-gray-800 p-6 rounded bg-gray-900 hover:bg-gray-800 transition
+                ${svc.key === selected ? 'border-green-500 ring-2 ring-green-500' : ''}`}
+                >
+                <h2 className="text-2xl font-bold mb-1">{svc.title}</h2>
+                <p className="text-sm text-gray-400 mb-2">{svc.tagline}</p>
+                <p className="text-gray-300 text-sm">{svc.description}</p>
+                <div className="text-xs text-green-400 mt-3">{svc.badge}</div>
+                </div>
+        ))}
         </div>
         </div>
     );
