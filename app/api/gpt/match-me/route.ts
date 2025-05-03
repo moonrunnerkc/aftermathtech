@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     Choose ONE from this list:
     ${validMatches.map((s) => `- ${s}`).join('\n')}
 
-    Respond with the exact line. No extra commentary, no formatting, no quotes.`;
+    Respond with the exact match — no punctuation, no quotes, no extra commentary. Just the service name.`;
 
     const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -47,9 +47,17 @@ export async function POST(req: Request) {
 
     try {
         const data = JSON.parse(raw);
-        const reply = data.choices?.[0]?.message?.content?.trim();
+        const reply = data.choices?.[0]?.message?.content?.trim() || '';
 
-        const match = validMatches.find((m) => reply?.toLowerCase().includes(m.toLowerCase()));
+        // Normalize both sides
+        const normalize = (str: string) =>
+        str.trim().toLowerCase().replace(/[^a-z0-9]/gi, '');
+
+        const normalizedReply = normalize(reply);
+
+        const match = validMatches.find(
+            (m) => normalize(m) === normalizedReply || normalizedReply.includes(normalize(m))
+        );
 
         if (!match) {
             return NextResponse.json({
@@ -57,7 +65,9 @@ export async function POST(req: Request) {
             });
         }
 
-        return NextResponse.json({ redirect: `/services?match=${encodeURIComponent(match)}` });
+        return NextResponse.json({
+            redirect: `/services?match=${encodeURIComponent(match)}`,
+        });
     } catch {
         return NextResponse.json({
             reply: `❌ Failed to parse GPT response:\n${raw}`,
