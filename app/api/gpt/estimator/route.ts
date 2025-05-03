@@ -26,9 +26,14 @@ export async function POST(req: Request) {
 
     try {
         const data = JSON.parse(raw);
-        const reply = data.choices?.[0]?.message?.content || '⚠️ GPT returned no content';
+        const reply = data.choices?.[0]?.message?.content;
+
+        if (!reply) {
+            return NextResponse.json({ reply: `⚠️ GPT gave no message.\nRaw:\n${raw}` });
+        }
+
         return NextResponse.json({ reply });
-    } catch {
-        return NextResponse.json({ reply: `⚠️ Failed to parse GPT response:\n${raw}` });
+    } catch (err) {
+        return NextResponse.json({ reply: `❌ Failed to parse GPT response:\n${raw}` });
     }
 }
