@@ -20,12 +20,74 @@ const services: Service[] = [
         key: 'GPT-powered automation',
         title: 'GPT-powered automation',
         tagline: 'Eliminate bottlenecks with intelligent agents.',
-        description:
-        'Custom-built automations using GPT-4 for lead routing, onboarding flows, and backend workflows. You describe the bottleneck, we build the AI that removes it.',
-        badge: '#GPT-4 #Automation #NoCode',
+        description: 'Automate lead routing, onboarding, and backend ops with GPT-4. You define the friction — we build the agent.',
+        badge: '#GPT-4 #Automation #Custom',
     },
-    // ... other services
+    {
+        key: 'AI ad systems',
+        title: 'AI ad systems',
+        tagline: 'Smarter ad variations. Higher conversions.',
+        description: 'We use GPT to generate and A/B test high-volume ad variants tuned to your niche and CTR goals.',
+        badge: '#PaidMedia #AutoVariants #RealtimeGPT',
+    },
+    {
+        key: 'AI eCommerce builder',
+        title: 'AI eCommerce builder',
+        tagline: 'Build smarter stores, not templates.',
+        description: 'We create GPT-trained product copy, smart bundles, and dynamic landing flows that adapt to user behavior.',
+        badge: '#eCom #NoTemplate #AIUX',
+    },
+    {
+        key: 'Content rewriting engine',
+        title: 'Content rewriting engine',
+        tagline: 'Take one idea, make 50 assets.',
+        description: 'Drop your article, podcast, or idea — we give you threads, ads, product pages, and SEO-boosted variants.',
+        badge: '#ContentRepurpose #MultiChannel',
+    },
+    {
+        key: 'Custom GPT agent development',
+        title: 'Custom GPT agent development',
+        tagline: 'Your own AI with a job description.',
+        description: 'Train a GPT to work like a staff member — schedule-driven, goal-aligned, and task-executing on your stack.',
+        badge: '#Agents #AutoOps #Trainable',
+    },
+    {
+        key: 'AI funnel builder',
+        title: 'AI funnel builder',
+        tagline: 'Turn raw traffic into optimized sequences.',
+        description: 'From email to checkout — every interaction in the funnel is generated and tested by a custom AI layer.',
+        badge: '#Funnels #Optimized #AIUX',
+    },
+    {
+        key: 'Prompt-engineered content campaigns',
+        title: 'Prompt-engineered content campaigns',
+        tagline: 'One prompt. Massive reach.',
+        description: 'We engineer base prompts that scale into dozens of consistent outputs across formats and platforms.',
+        badge: '#PromptStrategy #ContentSystems',
+    },
+    {
+        key: 'Realtime chat-based lead capture',
+        title: 'Realtime chat-based lead capture',
+        tagline: 'Forms are dead. Conversations close.',
+        description: 'Convert visits with GPT-powered chat that asks, qualifies, routes, and logs — no scripts, no forms.',
+        badge: '#ConversationalAI #Leads',
+    },
+    {
+        key: 'AI document analysis',
+        title: 'AI document analysis',
+        tagline: 'Let GPT scan your docs and make them useful.',
+        description: 'Upload PDFs, contracts, SOPs — we embed them and build searchable GPT interfaces that understand context.',
+        badge: '#Docs #Embeddings #SearchGPT',
+    },
+    {
+        key: 'Persona-matched GPT agents',
+        title: 'Persona-matched GPT agents',
+        tagline: 'Train GPT to match a tone, voice, or brand persona.',
+        description: 'We fine-tune GPT responses to match specific tones: aggressive sales, helpful coach, skeptical expert, and more.',
+        badge: '#ToneControl #VoiceTuning',
+    },
 ];
+
 
 
 
