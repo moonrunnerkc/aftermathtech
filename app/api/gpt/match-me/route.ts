@@ -1,18 +1,29 @@
-// 🔹 app/api/gpt/match-me/route.ts
+import { NextResponse } from 'next/server';
+
 export async function POST(req: Request) {
-    const body = await req.json();
-    const input = body.input;
+    const { input } = await req.json();
 
     if (!input) {
-        return new Response(JSON.stringify({ error: 'Missing input' }), { status: 400 });
+        return NextResponse.json({ error: 'Missing input' }, { status: 400 });
     }
 
-    const lower = input.toLowerCase();
-    let reply = 'No match found.';
+    const prompt = `You're a strategist for a GPT automation agency. Based on the client's request, match them to the most appropriate AI-powered service offering. Be direct.\n\nClient input: "${input}"`;
 
-    if (lower.includes('automation')) reply = '✅ You need our Automation Systems Service';
-    else if (lower.includes('ecommerce')) reply = '✅ We recommend the GPT eCommerce Builder';
-    else if (lower.includes('content')) reply = '✅ Consider the AI Content Engine Suite';
+    const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            model: 'gpt-4',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.6,
+        }),
+    });
 
-    return new Response(JSON.stringify({ reply }), { status: 200 });
+    const data = await gptRes.json();
+    const reply = data.choices?.[0]?.message?.content || 'No match found.';
+
+    return NextResponse.json({ reply });
 }

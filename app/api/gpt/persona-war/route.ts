@@ -1,13 +1,22 @@
-// 🔹 app/api/gpt/persona-war/route.ts
+import { NextResponse } from 'next/server';
+
 export async function POST(req: Request) {
     const body = await req.json();
     const prompt = body.prompt;
 
     if (!prompt) {
-        return new Response(JSON.stringify({ error: 'Missing prompt' }), { status: 400 });
+        return NextResponse.json({ error: 'Missing prompt' }, { status: 400 });
     }
 
-    const reply = `🔊 GPT Response Simulation: "${prompt}" evaluated across three AI persona styles.`;
+    const personas = [
+        { name: 'Strategist', style: 'Direct, tactical, focused on outcomes' },
+        { name: 'Visionary', style: 'Expansive, abstract, explores big ideas' },
+        { name: 'Critic', style: 'Skeptical, sharp, looks for weak points' },
+    ];
 
-    return new Response(JSON.stringify({ reply }), { status: 200 });
+    const reply = personas.map((p) => {
+        return `🧠 ${p.name} (${p.style}):\nResponse to "${prompt}" would emphasize their unique POV.\n`;
+    }).join('\n');
+
+    return NextResponse.json({ reply });
 }

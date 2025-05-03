@@ -1,13 +1,29 @@
-// 🔹 app/api/gpt/estimator/route.ts
-export async function POST(req: Request) {
-    const body = await req.json();
-    const input = body.idea;
+import { NextResponse } from 'next/server';
 
-    if (!input) {
-        return new Response(JSON.stringify({ error: 'Missing idea input' }), { status: 400 });
+export async function POST(req: Request) {
+    const { idea } = await req.json();
+
+    if (!idea) {
+        return NextResponse.json({ error: 'Missing idea input' }, { status: 400 });
     }
 
-    const reply = `Rough estimate: $5–8k to build '${input}' using GPT-4 automation.`;
+    const prompt = `Estimate the time, cost, and team required to build this idea using GPT-based automation. Be realistic, concise, and clear. Format the output in bullet points.\n\nIdea: "${idea}"`;
 
-    return new Response(JSON.stringify({ reply }), { status: 200 });
+    const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            model: 'gpt-4',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.7,
+        }),
+    });
+
+    const data = await gptRes.json();
+    const reply = data.choices?.[0]?.message?.content || '⚠️ GPT returned no content';
+
+    return NextResponse.json({ reply });
 }
