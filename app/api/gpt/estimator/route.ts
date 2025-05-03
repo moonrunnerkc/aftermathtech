@@ -1,54 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
+// 🔹 app/api/gpt/estimator/route.ts
+export async function POST(req: Request) {
+    const body = await req.json();
+    const input = body.idea;
 
-export async function POST(req: NextRequest) {
-    const { idea } = await req.json();
-
-    const prompt = `
-    You are an AI project scoping assistant. Given a user's idea, return a structured response including:
-
-    1. Summary of the project
-    2. Estimated time to complete (in weeks)
-    3. Suggested tech stack (frontend, backend, AI tools)
-    4. Ballpark cost (in USD)
-
-    User Idea:
-    "${idea}"
-
-    Respond in clean Markdown format.
-    `;
-
-    const apiKey = process.env.OPENAI_API_KEY;
-
-    if (!apiKey) {
-        console.error("🚨 MISSING API KEY");
-        return NextResponse.json({ error: 'Missing OpenAI API key' }, { status: 500 });
+    if (!input) {
+        return new Response(JSON.stringify({ error: 'Missing idea input' }), { status: 400 });
     }
 
-    try {
-        const res = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: 'gpt-4',
-                messages: [{ role: 'user', content: prompt }],
-            }),
-        });
+    const reply = `Rough estimate: $5–8k to build '${input}' using GPT-4 automation.`;
 
-        const data = await res.json();
-
-        if (!res.ok) {
-            console.error("🔴 OpenAI Error:", data);
-            return NextResponse.json({ error: data }, { status: res.status });
-        }
-
-        const reply = data.choices?.[0]?.message?.content || 'No response from GPT.';
-        console.log("✅ GPT Reply:", reply);
-        return NextResponse.json({ reply });
-    } catch (err) {
-        console.error("🔥 Server Error:", err);
-        return NextResponse.json({ error: 'Server error.' }, { status: 500 });
-    }
+    return new Response(JSON.stringify({ reply }), { status: 200 });
 }
