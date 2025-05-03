@@ -14,7 +14,8 @@ export default function PortfolioPage() {
         <div className="min-h-screen bg-black text-white p-8">
         <h1 className="text-4xl font-bold mb-6">📁 AI Systems Portfolio</h1>
         <div className="grid gap-6 sm:grid-cols-2">
-        {projects.map((proj) => (
+        {Array.isArray(projects) && projects.map((proj) => (
+
             <MotionDiv
             key={proj.slug}
             whileHover={{ scale: 1.03 }}
