@@ -3,8 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
 
 type Service = {
     key: string;
@@ -13,7 +12,6 @@ type Service = {
     description: string;
     badge: string;
 };
-
 
 const services: Service[] = [
     {
@@ -88,17 +86,23 @@ const services: Service[] = [
     },
 ];
 
-
-
-
-export default function Services() {
+export default function ServicesPage() {
     const searchParams = useSearchParams();
     const selected = searchParams.get('match');
     const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+    const [highlighted, setHighlighted] = useState<string | null>(null);
 
     useEffect(() => {
-        if (selected && scrollRefs.current[selected]) {
-            scrollRefs.current[selected]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (selected) {
+            console.log('Selected match:', selected);
+            setTimeout(() => {
+                const ref = scrollRefs.current[selected];
+                console.log('Scroll ref:', ref);
+                if (ref) {
+                    ref.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setHighlighted(selected);
+                }
+            }, 500); // delay ensures DOM is ready
         }
     }, [selected]);
 
@@ -110,23 +114,30 @@ export default function Services() {
         </p>
 
         <div className="grid gap-8 sm:grid-cols-2">
-        {services.map((svc, idx) => (
-            <motion.div
-            key={idx}
-            ref={(el: HTMLDivElement | null) => {
-                scrollRefs.current[svc.key] = el;
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: idx * 0.1 }}
-            className="bg-gray-900 border border-gray-700 rounded-xl p-6 hover:bg-gray-800 transition"
-            >
-            <h2 className="text-2xl font-bold text-white">{svc.title}</h2>
-            <p className="text-green-400 mt-1">{svc.tagline}</p>
-            <p className="text-gray-300 mt-4 text-sm leading-relaxed">{svc.description}</p>
-            <p className="text-xs text-gray-500 mt-4">{svc.badge}</p>
-            </motion.div>
-        ))}
+        {services.map((svc, idx) => {
+            const isHighlighted = highlighted === svc.key;
+            return (
+                <motion.div
+                key={idx}
+                ref={(el: HTMLDivElement | null) => {
+                    scrollRefs.current[svc.key] = el;
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className={`bg-gray-900 border rounded-xl p-6 transition ${
+                    isHighlighted
+                    ? 'border-green-500 ring-2 ring-green-400'
+                    : 'border-gray-700 hover:bg-gray-800'
+                }`}
+                >
+                <h2 className="text-2xl font-bold text-white">{svc.title}</h2>
+                <p className="text-green-400 mt-1">{svc.tagline}</p>
+                <p className="text-gray-300 mt-4 text-sm leading-relaxed">{svc.description}</p>
+                <p className="text-xs text-gray-500 mt-4">{svc.badge}</p>
+                </motion.div>
+            );
+        })}
         </div>
 
         <div className="mt-12">
