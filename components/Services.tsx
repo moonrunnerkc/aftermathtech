@@ -113,7 +113,10 @@ export default function Services() {
         {services.map((svc) => (
             <div
             key={svc.key}
-            ref={(el) => (scrollRefs.current[svc.key] = el)}
+            ref={(el) => {
+                scrollRefs.current[svc.key] = el;
+            }}
+
             className={`border border-gray-800 p-6 rounded bg-gray-900 hover:bg-gray-800 transition
                 ${svc.key === selected ? 'border-green-500 ring-2 ring-green-500' : ''}`}
                 >
