@@ -1,14 +1,13 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
-import { type Page } from 'next';
 
-export const generateStaticParams = async () => {
-    return projects.map((project) => ({
-        slug: project.slug,
+export async function generateStaticParams() {
+    return projects.map((p) => ({
+        slug: p.slug,
     }));
-};
+}
 
-const Page: Page = async ({ params }) => {
+export default async function Page({ params }: { params: { slug: string } }) {
     const project = projects.find((p) => p.slug === params.slug);
     if (!project) return notFound();
 
@@ -47,6 +46,4 @@ const Page: Page = async ({ params }) => {
         </article>
         </div>
     );
-};
-
-export default Page;
+}
