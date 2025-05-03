@@ -9,16 +9,6 @@ export async function POST(req: Request) {
 
     const prompt = `You're a technical project manager and GPT engineer. Given this client idea: "${idea}", estimate the MVP build in hours, cost, stack, and required skills. Format the result in markdown bullets. Be specific and assertive.`;
 
-    const raw = await gptRes.text();
-
-    try {
-        const data = JSON.parse(raw);
-        const reply = data.choices?.[0]?.message?.content || '⚠️ GPT returned no content';
-        return NextResponse.json({ reply });
-    } catch {
-        return NextResponse.json({ reply: `⚠️ Failed to parse GPT response:\n${raw}` });
-    }
-
     const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -32,8 +22,13 @@ export async function POST(req: Request) {
         }),
     });
 
-    const data = await gptRes.json();
-    const reply = data.choices?.[0]?.message?.content || '⚠️ GPT returned no content';
+    const raw = await gptRes.text();
 
-    return NextResponse.json({ reply });
+    try {
+        const data = JSON.parse(raw);
+        const reply = data.choices?.[0]?.message?.content || '⚠️ GPT returned no content';
+        return NextResponse.json({ reply });
+    } catch {
+        return NextResponse.json({ reply: `⚠️ Failed to parse GPT response:\n${raw}` });
+    }
 }
