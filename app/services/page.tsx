@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
+'use client';
 
-const Services = dynamic(() => import('@/components/Services'), { ssr: false });
+import Services from '@/components/Services';
 
 export default function Page() {
     return <Services />;
