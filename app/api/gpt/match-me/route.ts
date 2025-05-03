@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     Respond ONLY with one of the above lines. No extras, no explanations.`;
 
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -34,20 +34,26 @@ export async function POST(req: Request) {
         }),
     });
 
-    const data = await res.json();
-    let reply = data.choices?.[0]?.message?.content?.trim();
+    const raw = await gptRes.text();
 
-    const validMatches = [
-        'GPT-powered automation',
-        'AI ad systems',
-        'AI eCommerce builder',
-        'AI content rewriting engine',
-        'Custom GPT agent development',
-    ];
+    try {
+        const data = JSON.parse(raw);
+        let reply = data.choices?.[0]?.message?.content?.trim();
 
-    if (!validMatches.includes(reply)) {
-        reply = 'No match found.';
+        const validMatches = [
+            'GPT-powered automation',
+            'AI ad systems',
+            'AI eCommerce builder',
+            'AI content rewriting engine',
+            'Custom GPT agent development',
+        ];
+
+        if (!validMatches.includes(reply)) {
+            return NextResponse.json({ reply: `⚠️ Invalid response:\n${reply}\n\nRaw:\n${raw}` });
+        }
+
+        return NextResponse.json({ reply });
+    } catch {
+        return NextResponse.json({ reply: `❌ Failed to parse GPT response:\n${raw}` });
     }
-
-    return NextResponse.json({ reply });
 }
