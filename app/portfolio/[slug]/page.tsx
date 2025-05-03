@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
+import type { PageProps } from 'next';
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default function ProjectPage({ params }: PageProps<{ slug: string }>) {
     const project = projects.find((p) => p.slug === params.slug);
     if (!project) return notFound();
 
