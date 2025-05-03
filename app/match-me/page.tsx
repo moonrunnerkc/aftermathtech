@@ -1,45 +1,52 @@
 'use client';
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function MatchMePage() {
     const [input, setInput] = useState('');
-    const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
-    async function handleMatch() {
+    async function getMatch() {
         setLoading(true);
-        const res = await fetch('/api/gpt/match-me', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ input }),
-        });
-        const data = await res.json();
-        setResponse(data.reply);
-        setLoading(false);
+        try {
+            const res = await fetch('/api/gpt/match-me', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ input }),
+            });
+
+            const data = await res.json();
+
+            if (data.redirect) {
+                router.push(data.redirect);
+            } else {
+                alert('⚠️ Could not find a match.');
+            }
+        } catch (err) {
+            alert('❌ GPT error.');
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
-        <div className="max-w-3xl mx-auto p-6 text-white">
-        <h1 className="text-3xl font-bold mb-4">🔍 Match Me to a Service</h1>
+        <div className="max-w-2xl mx-auto p-6 text-white">
+        <h1 className="text-3xl mb-4 font-bold">🔍 Match Me to a Service</h1>
         <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Describe what you&apos;re trying to build or solve..."
+        placeholder="Describe your situation, project, or need..."
         className="w-full h-32 p-4 bg-black border border-gray-700 rounded resize-none"
         />
         <button
-        onClick={handleMatch}
-        className="mt-4 px-6 py-2 bg-blue-500 text-black font-bold rounded hover:bg-blue-400"
+        onClick={getMatch}
+        className="mt-4 px-6 py-2 bg-green-500 text-black font-bold rounded hover:bg-green-400"
         disabled={loading}
         >
-        {loading ? 'Matching…' : 'Match Me'}
+        {loading ? 'Thinking...' : 'Match Me'}
         </button>
-
-        {response && (
-            <div className="mt-6 p-4 bg-gray-900 border border-gray-700 rounded whitespace-pre-wrap">
-            {response}
-            </div>
-        )}
         </div>
     );
 }
