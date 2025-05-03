@@ -45,3 +45,10 @@ export default function ProjectPage({ params }: Props) {
         </div>
     );
 }
+
+export async function generateStaticParams() {
+    return projects.map((p) => ({
+        slug: p.slug,
+    }));
+}
+
