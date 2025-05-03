@@ -24,11 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <body className="bg-black text-white flex flex-col min-h-screen">
+    <main className="flex-1">{children}</main>
+    <footer className="text-sm text-gray-500 text-center py-6 border-t border-gray-800">
+    &copy; {new Date().getFullYear()} Aftermath Technologies. Created by Brad Kinnard.
+    </footer>
+    </body>
+
     </html>
   );
 }
