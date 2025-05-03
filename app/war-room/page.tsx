@@ -17,7 +17,7 @@ export default function WarRoomPage() {
 
             const data = await res.json();
             setResponse(data.reply || 'No response received.');
-        } catch (err) {
+        } catch {
             setResponse('❌ Error calling GPT API.');
         } finally {
             setLoading(false);
