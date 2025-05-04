@@ -2,10 +2,10 @@ export const projects = [
     {
         slug: 'fridge',
         title: "What's In My Fridge",
-        summary: 'A real-time GPT app that recommends meals based on available ingredients. Sleek UX, AI logic, and practical GPT integration.',
+        summary: 'A real-time GPT app that allows users to take a picture, or provide a list, of their fridge content and then recommends meals based on available ingredients. Sleek UX, AI logic, and practical GPT integration.',
         tech: ['Next.js', 'GPT-4', 'Tailwind'],
         content: `🧠 GPT-driven cooking assistant
-        🔹 Users enter fridge contents — GPT suggests meals
+        🔹 Users upload fridge contents image or enter a list — GPT suggests meals
         🔹 Designed to prove real-world AI utility in daily life
         🔹 Built for performance and clarity
 
