@@ -1,5 +1,43 @@
 export const projects = [
     {
+        slug: 'fridge',
+        title: "What's In My Fridge",
+        summary: 'A real-time GPT app that recommends meals based on available ingredients. Sleek UX, AI logic, and practical GPT integration.',
+        tech: ['Next.js', 'GPT-4', 'Tailwind'],
+        content: `🧠 GPT-driven cooking assistant
+        🔹 Users enter fridge contents — GPT suggests meals
+        🔹 Designed to prove real-world AI utility in daily life
+        🔹 Built for performance and clarity
+
+        🌐 https://vercel.com/brad-kinnards-projects/whats-in-my-fridge`
+    },
+    {
+        slug: 'promptforge',
+        title: 'Promptforge',
+        summary: 'An open playground for AI prompt engineering — forge, preview, and refine GPT prompts live.',
+        tech: ['Netlify', 'React', 'OpenAI'],
+        content: `🎯 Prompt prototyping tool
+        🔹 Create, store, test, and refine prompts
+        🔹 Great for internal prompt tuning and client demos
+        🔹 Accessible, fast, and open-source aligned
+
+        🌐 https://promptforge-app.netlify.app/`
+    },
+    {
+        slug: 'neutronvault',
+        title: 'NeutronVault',
+        summary: 'Pulsar-based encryption for a post-quantum world. Built for critical infrastructure and maximum security.',
+        tech: ['FastAPI', 'React', 'Tailwind', 'Cryptography'],
+        content: `🔐 NeutronVault
+        🔹 Solo-deployable engine using pulsar timing data for entropy
+        🔹 Real-time entropy → AES key → secure exchange
+        🔹 Verifiable identities, no third-party reliance
+        🔹 Offline-capable once seeded
+
+        🌐 https://neutronvault.dev (Coming soon)`
+    }
+
+    {
         slug: 'killgrid',
         title: 'KillGrid — Autonomous Orbital Threat Detection',
         summary: 'Detects satellite proximity threats, predicts collisions, and runs entirely containerized with a live dashboard.',
