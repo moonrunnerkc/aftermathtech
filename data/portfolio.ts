@@ -9,7 +9,7 @@ export const projects = [
         🔹 Designed to prove real-world AI utility in daily life
         🔹 Built for performance and clarity
 
-        🌐 https://vercel.com/brad-kinnards-projects/whats-in-my-fridge`
+        🌐 <a href="https://vercel.com/brad-kinnards-projects/whats-in-my-fridge_blank" />
     },
     {
         slug: 'promptforge',
