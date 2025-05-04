@@ -1,6 +1,11 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
+function extractUrl(text: string): string {
+    const match = text.match(/https?:\/\/[^\s)]+/);
+    return match ? match[0] : '#';
+}
+
 export async function generateStaticParams() {
     return projects.map((project) => ({
         slug: project.slug,
@@ -35,13 +40,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             ) : line.trim().startsWith('🌐') ? (
                 <p key={idx} className="mt-4">
                 <a
-                href={line.replace(/^🌐\s*/, '').trim()}
+                href={extractUrl(line)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-4 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500"
                 >
                 🔗 Visit Project
                 </a>
+
                 </p>
             ) : (
                 <p key={idx}>{line.trim()}</p>
