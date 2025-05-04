@@ -35,7 +35,7 @@ export const projects = [
     🔹 Offline-capable once seeded
 
     🌐 https://neutronvault.dev (Coming soon)`
-  }
+  },
 
   {
     slug: 'killgrid',
