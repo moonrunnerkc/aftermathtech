@@ -30,20 +30,24 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
         <article className="prose prose-invert max-w-none prose-p:leading-relaxed prose-a:text-green-400">
         {project.content.split('\n').map((line, idx) =>
-            line.startsWith('🔹') ? (
-                <p key={idx} className="leading-relaxed">
-                {line}
-                </p>
-            ) : line.startsWith('🌐') ? (
+            line.trim().startsWith('🔹') ? (
+                <p key={idx} className="leading-relaxed">{line.trim()}</p>
+            ) : line.trim().startsWith('🌐') ? (
                 <p key={idx} className="mt-4">
-                <a href={line.replace(/^🌐\s*/, '').trim()} target="_blank" rel="noopener noreferrer">
-                🔗 {line.replace(/^🌐\s*/, '').trim()}
+                <a
+                href={line.replace(/^🌐\s*/, '').trim()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-4 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500"
+                >
+                🔗 Visit Project
                 </a>
                 </p>
             ) : (
-                <p key={idx}>{line}</p>
+                <p key={idx}>{line.trim()}</p>
             )
         )}
+
         </article>
         </div>
     );
