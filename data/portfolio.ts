@@ -9,7 +9,7 @@ export const projects = [
         🔹 Users upload fridge contents image or enter a list — GPT suggests meals
         🔹 Designed to prove real-world AI utility in daily life
         🔹 Built for performance and clarity
-        🌐 https://vercel.com/brad-kinnards-projects/whats-in-my-fridge`,
+        🌐 https://whats-in-my-fridge-two.vercel.app/`,
     },
     {
         slug: 'promptforge',
@@ -33,8 +33,7 @@ export const projects = [
         🔹 Solo-deployable engine using pulsar timing data for entropy
         🔹 Real-time entropy → AES key → secure exchange
         🔹 Verifiable identities, no third-party reliance
-        🔹 Offline-capable once seeded
-        🌐 https://neutronvault.dev`,
+        🔹 Offline-capable once seeded`,
     },
     {
         slug: 'killgrid',
