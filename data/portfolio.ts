@@ -1,5 +1,20 @@
 export const projects = [
     {
+        slug: 'lunarbeacon',
+        title: 'LunarBeacon AI',
+        summary: 'Signal authentication via lunar reflection modeling, GPS telemetry, and GPT-4 intelligence. Built for zero-trust satellite verification during outages or spoofing.',
+        tech: ['FastAPI', 'OpenAI', 'Orbital Physics', 'Geospatial'],
+        content: `🛰️ LunarBeacon AI
+
+        🔹 Authenticates satellite ground commands using reflected moonlight signal patterns
+        🔹 Verifies comms during outages, jamming, or spoofing attempts
+        🔹 Combines GPT-4 reasoning with geospatial telemetry and orbital physics
+        🔹 Built for zero-trust environments in defense, cybersecurity, and comms
+
+        🌐 https://lunarbeacon.netlify.app/`
+    }
+
+    {
         slug: 'fridge',
         title: "What's In My Fridge",
         summary:
