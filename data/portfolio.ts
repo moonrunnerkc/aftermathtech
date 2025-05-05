@@ -12,7 +12,7 @@ export const projects = [
         🔹 Built for zero-trust environments in defense, cybersecurity, and comms
 
         🌐 https://lunarbeacon.netlify.app/`
-    }
+    },
 
     {
         slug: 'fridge',
