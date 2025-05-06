@@ -1,16 +1,21 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+const [gptUp, setGptUp] = useState<boolean | null>(null);
+
+useEffect(() => {
+  fetch('/api/status/gpt')
+    .then(res => res.ok ? setGptUp(true) : setGptUp(false))
+    .catch(() => setGptUp(false));
+}, []);
 
 const links = [
   { href: '/', label: 'Home' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
-  { href: '/war-room', label: 'War Room' },
-  { href: '/estimator', label: 'Estimator' },
-  { href: '/match-me', label: 'Match Me' },
 ];
 
 export default function Nav() {
@@ -20,9 +25,21 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-black/70 border-b border-gray-800">
       <div className="px-6 py-4 flex justify-between items-center text-white">
-        <Link href="/" className="text-neon-green font-bold text-lg tracking-wide">
-          Aftermath Technologies
-        </Link>
+      <div className="flex items-center gap-2">
+  <Link href="/" className="text-neon-green font-bold text-lg tracking-wide">
+    Aftermath Technologies
+  </Link>
+  {gptUp !== null && (
+    <span
+      className={`w-2 h-2 rounded-full animate-pulse ${
+        gptUp ? 'bg-neon-green' : 'bg-red-500'
+      }`}
+      title={gptUp ? 'GPT OK' : 'GPT DOWN'}
+    />
+  )}
+</div>
+
+        
 
         <button className="sm:hidden" onClick={() => setOpen(!open)} aria-label="Toggle Menu">
           <svg
@@ -74,3 +91,4 @@ export default function Nav() {
     </nav>
   );
 }
+
