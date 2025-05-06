@@ -94,6 +94,7 @@ Use this to prototype responses and share with collaborators.`,
 🔹 Uses GPT-4 with tuned system prompt  
 🔹 Fully responsive, real-time output  
 🔹 Powered by OpenAI chat completions API
+🌐 [Try It Now](https://www.aftermathtech.com/estimator)
     `,
     usage: `Describe your project idea clearly.  
 GPT will return an estimate with hours, budget, tech stack, and required skills.`,
@@ -108,6 +109,7 @@ GPT will return an estimate with hours, budget, tech stack, and required skills.
 🔹 GPT maps it to the right service  
 🔹 Auto-scrolls and highlights result  
 🔹 Built with fuzzy match + GPT validation
+🌐 [Try It Now](https://www.aftermathtech.com/match-me)
     `,
     usage: `Just describe your goal (e.g. "I need a pitch deck AI" or "I want to train my own GPT").  
 The system maps it to the right Aftermath service and redirects you instantly.`,
