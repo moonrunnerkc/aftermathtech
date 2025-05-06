@@ -37,6 +37,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {project.content.split('\n').map((line, idx) =>
             line.trim().startsWith('🔹') ? (
                 <p key={idx} className="leading-relaxed">{line.trim()}</p>
+                
             ) : line.trim().startsWith('🌐') ? (
                 <p key={idx} className="mt-4">
                 <a
@@ -53,6 +54,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 <p key={idx}>{line.trim()}</p>
             )
         )}
+        {project.usage && (
+  <div className="mt-8 p-4 bg-gray-900 border border-gray-700 rounded">
+    <h3 className="text-lg font-bold mb-2 text-neon-cyan">🛠 How to Use</h3>
+    <p className="whitespace-pre-line text-gray-300">{project.usage}</p>
+  </div>
+)}
+
 
         </article>
         </div>
