@@ -1,46 +1,63 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-const [gptUp, setGptUp] = useState<boolean | null>(null);
-
-useEffect(() => {
-  fetch('/api/status/gpt')
-    .then(res => res.ok ? setGptUp(true) : setGptUp(false))
-    .catch(() => setGptUp(false));
-}, []);
 
 const links = [
   { href: '/', label: 'Home' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
+  { href: '/war-room', label: 'War Room' },
+  { href: '/estimator', label: 'Estimator' },
+  { href: '/match-me', label: 'Match Me' },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [gptUp, setGptUp] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const checkGPT = async () => {
+      try {
+        const res = await fetch('/api/status/gpt');
+        if (isMounted) setGptUp(res.ok);
+      } catch {
+        if (isMounted) setGptUp(false);
+      }
+    };
+
+    checkGPT(); // initial
+    const interval = setInterval(checkGPT, 60000); // every 60s
+
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-black/70 border-b border-gray-800">
       <div className="px-6 py-4 flex justify-between items-center text-white">
-      <div className="flex items-center gap-2">
-  <Link href="/" className="text-neon-green font-bold text-lg tracking-wide">
-    Aftermath Technologies
-  </Link>
-  {gptUp !== null && (
-    <span
-      className={`w-2 h-2 rounded-full animate-pulse ${
-        gptUp ? 'bg-neon-green' : 'bg-red-500'
-      }`}
-      title={gptUp ? 'GPT OK' : 'GPT DOWN'}
-    />
-  )}
-</div>
+        {/* Brand + GPT badge */}
+        <div className="flex items-center gap-2">
+          <Link href="/" className="text-neon-green font-bold text-lg tracking-wide">
+            Aftermath Technologies
+          </Link>
+          {gptUp !== null && (
+            <span
+              className={`w-2 h-2 rounded-full animate-pulse ${
+                gptUp ? 'bg-neon-green' : 'bg-red-500'
+              }`}
+              title={gptUp ? 'GPT OK' : 'GPT DOWN'}
+            />
+          )}
+        </div>
 
-        
-
+        {/* Hamburger toggle (mobile only) */}
         <button className="sm:hidden" onClick={() => setOpen(!open)} aria-label="Toggle Menu">
           <svg
             className="w-6 h-6 text-white"
@@ -52,6 +69,7 @@ export default function Nav() {
           </svg>
         </button>
 
+        {/* Desktop links */}
         <div className="hidden sm:flex gap-6 text-sm">
           {links.map(({ href, label }) => (
             <Link
@@ -91,4 +109,3 @@ export default function Nav() {
     </nav>
   );
 }
-
