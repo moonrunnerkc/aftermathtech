@@ -44,14 +44,22 @@ export default function Nav() {
           <Link href="/" className="text-neon-green font-bold text-lg tracking-wide">
             Aftermath Technologies
           </Link>
-          {gptUp !== null && (
-            <span
-              className={`w-2 h-2 rounded-full animate-pulse ${
-                gptUp ? 'bg-neon-green' : 'bg-red-500'
-              }`}
-              title={gptUp ? 'GPT OK' : 'GPT DOWN'}
-            />
-          )}
+          <div className="relative group">
+  <span
+    className={`w-2 h-2 rounded-full animate-pulse ${
+      gptUp === null
+        ? 'bg-yellow-500'
+        : gptUp
+        ? 'bg-neon-green'
+        : 'bg-red-500'
+    }`}
+  />
+
+  <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-black text-white text-xs px-3 py-1 rounded border border-gray-700 opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-50">
+    {gptUp === null ? 'Checking GPT...' : gptUp ? 'GPT OK' : 'GPT DOWN'}
+  </div>
+</div>
+
         </div>
 
         {/* Hamburger toggle (mobile only) */}
