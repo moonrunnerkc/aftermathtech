@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import './globals.css';
+import Nav from 'components/Nav';
+
 
 
 export const metadata: Metadata = {
-  title: "Aftermath Technologies",
-  description: "created by Brad Kinnard",
+  title: 'Aftermath Technologies',
+  description: 'Created by Brad Kinnard',
 };
 
 export default function RootLayout({
@@ -15,24 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className="bg-black text-white flex flex-col min-h-screen">
-    <nav className="p-4 bg-black text-white flex justify-between items-center border-b border-gray-800">
-    <h1 className="text-xl font-bold">Aftermath Technologies</h1>
-    <div className="space-x-4">
-
-  <Link href="/">Home</Link>
-  <Link href="/portfolio">Portfolio</Link>
-  <Link href="/services">Services</Link>
-
-    </div>
-    </nav>
-
-    <main className="flex-1">{children}</main>
-    <footer className="text-sm text-gray-500 text-center py-6 border-t border-gray-800">
-    &copy; {new Date().getFullYear()} Aftermath Technologies. Created by Brad Kinnard.
-    </footer>
-    </body>
-
+      <body className="bg-black text-white flex flex-col min-h-screen">
+        <Nav />
+        <main className="flex-1 pt-20">{children}</main>
+        <footer className="text-sm text-gray-500 text-center py-6 border-t border-gray-800">
+          &copy; {new Date().getFullYear()} Aftermath Technologies. Created by Brad Kinnard.
+        </footer>
+      </body>
     </html>
   );
 }

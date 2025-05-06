@@ -32,7 +32,10 @@ h1, h2, h3 {
   letter-spacing: -0.015em;
   line-height: 1.2;
 }
-
+.button-glow {
+  @apply font-bold px-6 py-3 rounded shadow-lg transition;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+}
 /* Cards and Containers */
 .card {
   @apply bg-gray-900 border border-gray-700 rounded-lg p-6;
