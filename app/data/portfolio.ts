@@ -13,6 +13,10 @@ export const projects = [
 
 🌐 [Coming Soon](https://neutronvault.dev)
     `,
+    usage: `NeutronVault is a backend tool. To use:
+- Deploy the FastAPI server
+- Configure pulsar seed entropy
+- Use the dashboard to generate and validate cryptographic keys`,
   },
   {
     slug: 'lunarbeacon',
@@ -26,8 +30,10 @@ export const projects = [
 🔹 Uses GPT-4 + orbital telemetry for intelligent checks  
 🔹 Built for defense, satellite, and cybersecurity operations
 
-🌐 [Live Demo](https://lunarbeacon.netlify.app/
+🌐 [Live Demo](https://lunarbeacon.netlify.app/)
     `,
+    usage: `Visit the demo. Simulate a command scenario or choose a test pattern.  
+LunarBeacon will analyze signal reliability and flag authenticity issues. GPT assists in commentary.`,
   },
   {
     slug: 'killgrid',
@@ -42,6 +48,9 @@ export const projects = [
 
 🌐 [KillGrid Live](https://killgrid-ai.netlify.app/)
     `,
+    usage: `Run the dashboard locally or via container.  
+Feed in satellite coordinates or simulate orbits.  
+Watch real-time threat zones and predicted collision alerts.`,
   },
   {
     slug: 'fridge',
@@ -56,6 +65,8 @@ export const projects = [
 
 🌐 [Live](https://whats-in-my-fridge-two.vercel.app/)
     `,
+    usage: `Upload a photo of your fridge or type your ingredients.  
+GPT will return suggested meals based on available items.`,
   },
   {
     slug: 'promptforge',
@@ -70,6 +81,8 @@ export const projects = [
 
 🌐 [Live](https://promptforge-app.netlify.app/)
     `,
+    usage: `Write your prompt, choose model behavior, and run it live.  
+Use this to prototype responses and share with collaborators.`,
   },
   {
     slug: 'estimator',
@@ -82,6 +95,8 @@ export const projects = [
 🔹 Fully responsive, real-time output  
 🔹 Powered by OpenAI chat completions API
     `,
+    usage: `Describe your project idea clearly.  
+GPT will return an estimate with hours, budget, tech stack, and required skills.`,
   },
   {
     slug: 'match-me',
@@ -94,5 +109,8 @@ export const projects = [
 🔹 Auto-scrolls and highlights result  
 🔹 Built with fuzzy match + GPT validation
     `,
+    usage: `Just describe your goal (e.g. "I need a pitch deck AI" or "I want to train my own GPT").  
+The system maps it to the right Aftermath service and redirects you instantly.`,
   },
 ];
+
