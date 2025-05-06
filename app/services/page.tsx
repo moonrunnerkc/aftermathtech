@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense } from 'react';
-import Services from '@/components/Services';
+import Services from 'components/services';
 
 export default function ServicesPageWrapper() {
     return (
