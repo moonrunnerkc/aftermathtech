@@ -8,9 +8,6 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/services', label: 'Services' },
-  { href: '/war-room', label: 'War Room' },
-  { href: '/estimator', label: 'Estimator' },
-  { href: '/match-me', label: 'Match Me' },
 ];
 
 export default function Nav() {
