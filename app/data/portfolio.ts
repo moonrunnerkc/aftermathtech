@@ -1,23 +1,5 @@
 export const projects = [
-  {
-    slug: 'neutronvault',
-    title: 'NeutronVault',
-    summary: 'Pulsar-based encryption for a post-quantum world.',
-    tech: ['FastAPI', 'React', 'Tailwind', 'Cryptography'],
-    content: `
-🔐 NeutronVault  
-🔹 Solo-deployable engine using pulsar timing data for entropy  
-🔹 Real-time entropy → AES key → secure exchange  
-🔹 Verifiable identities, no third-party reliance  
-🔹 Offline-capable once seeded
-
-🌐 [Coming Soon](https://neutronvault.dev)
-    `,
-    usage: `NeutronVault is a backend tool. To use:
-- Deploy the FastAPI server
-- Configure pulsar seed entropy
-- Use the dashboard to generate and validate cryptographic keys`,
-  },
+  
   {
     slug: 'lunarbeacon',
     title: 'LunarBeacon AI',
@@ -51,6 +33,25 @@ LunarBeacon will analyze signal reliability and flag authenticity issues. GPT as
     usage: `Run the dashboard locally or via container.  
 Feed in satellite coordinates or simulate orbits.  
 Watch real-time threat zones and predicted collision alerts.`,
+  },
+  {
+    slug: 'neutronvault',
+    title: 'NeutronVault',
+    summary: 'Pulsar-based encryption for a post-quantum world.',
+    tech: ['FastAPI', 'React', 'Tailwind', 'Cryptography'],
+    content: `
+🔐 NeutronVault  
+🔹 Solo-deployable engine using pulsar timing data for entropy  
+🔹 Real-time entropy → AES key → secure exchange  
+🔹 Verifiable identities, no third-party reliance  
+🔹 Offline-capable once seeded
+
+ --- [Coming Soon] ---
+    `,
+    usage: `NeutronVault is a backend tool. To use:
+- Deploy the FastAPI server
+- Configure pulsar seed entropy
+- Use the dashboard to generate and validate cryptographic keys`,
   },
   {
     slug: 'fridge',
