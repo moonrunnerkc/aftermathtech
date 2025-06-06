@@ -1,4 +1,72 @@
 export const projects = [
+
+  {
+    slug: 'blackbox-mind-v3',
+    title: 'Blackbox Mind v3: Meta-Cognitive Synthetic Intelligence+',
+    summary: 'A contradiction-driven cognition engine that evolves its goals, beliefs, and identity — without needing human prompts.',
+    tech: ['Python', 'Z3 Theorem Prover', 'llama.cpp', 'Neo4j', 'networkx', 'matplotlib', 'graphviz', 'JSON', 'SQLite'],
+    content: `🧠 Belief Ecology Engine forms a dynamic mental ecosystem where beliefs mutate, compete, and decay naturally.
+
+⚖️ Recursive Contradiction Tracing logs not just failures but the causal chain behind them, enabling long-term correction.
+
+🧬 Contradiction-Formed Identity evolves the system’s personality over time based on which internal battles it wins or loses.
+
+🪞 Meta-Observer Sub-Agent silently monitors identity drift, belief decay, and decision loops — making it self-aware and self-correcting.
+
+🧭 Adaptive Goal Collapse lets it re-prioritize and mutate objectives on its own as belief credibility changes.
+
+🚧 Currently building: Symbolic logic validator, goal forking engine, visual introspection graph, and LLM-simulated inner voice layer.
+
+🔗 GitHub Repo: https://github.com/moonrunnerkc/belief-ecology
+
+🔗 Medium Abstract: Belief Ecology: A Self-Regulating Cognitive Memory Architecture
+
+🔗 Live Preview: Coming soon — full system launch in late Summer 2025`
+  },
+  {
+    slug: 'autonomous-ai-engineer',
+    title: 'Autonomous AI Engineer',
+    summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
+    tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
+    content: `💾 Reflexive memory architecture: Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
+
+🧠 Self-evolving logic: The AI can recall past decisions, codebases, and conversation threads to refine its own modules and regenerate stale logic over time.
+
+📂 File-context-aware prompts: Dynamically injects relevant memory based on active file selection and surrounding intent—eliminating redundant context entry.
+
+🔍 Custom local vector store: Entirely offline memory index (FAISS + JSON) scoped by project, tags, and timestamps, supporting top-K semantic queries with pruning logic.
+
+🧪 Under construction: Summarization engine for long-term memory compaction, live file watchers for auto-context refresh, and intent-based memory routing are being implemented.
+
+🔗 GitHub: Coming soon
+
+🔗 Live preview: Runs locally via Flask dev server — deployment pipeline in development
+
+Notes: Open source plans are queued for post-Week 4 milestone (hybrid online/offline mode)`
+  },
+  {
+    slug: 'belief-ecology',
+    title: 'Belief Ecology: A Self-Regulating Cognitive Memory Architecture',
+    summary: 'A novel cognitive structure where beliefs act like biological entities — evolving, competing, and mutating within an autonomous AI mind.',
+    tech: ['Python', 'Neo4j', 'SQLite', 'networkx', 'matplotlib', 'graphviz'],
+    content: `🌱 Living Belief Ecosystem — beliefs are treated as organic units with fitness scores, subject to reinforcement, decay, mutation, and death.
+
+🔁 Self-Regulation — the system rebalances its belief pool over time based on internal conflict, relevance decay, and emotional tags.
+
+🧠 Applied in Blackbox Mind v3 — provides the memory substrate and dynamic reasoning context for identity mutation and contradiction-based learning.
+
+🔬 Independent Architecture — designed to function standalone or integrate into any cognitive AI needing long-term autonomous thought evolution.
+
+🧪 Experimental Belief Mutation — merges and morphs related beliefs into higher-order inferences, building a scaffold for emergent self-modification.
+
+🚧 In development: Emotion-weighted reinforcement logic, decay entropy models, and ecological replay prioritization.
+
+🔗 GitHub Repo: https://github.com/moonrunnerkc/belief-ecology
+
+🔗 Medium Abstract: Belief Ecology: A Self-Regulating Cognitive Memory Architecture for Autonomous AI Systems
+
+🔗 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025`
+  },
   
   {
     slug: 'lunarbeacon',
