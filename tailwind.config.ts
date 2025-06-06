@@ -5,6 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'neon-green': '#39FF14',
+        'neon-cyan': '#00FFFF',
         neon: {
           green: '#39FF14',
           cyan: '#00FFFF',
