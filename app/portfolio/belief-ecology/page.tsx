@@ -18,7 +18,7 @@ export default function BeliefEcologyPage() {
 Emotion-weighted reinforcement, entropy models, and ecosystem visualization.
 
 🔗 GitHub: [github.com/moonrunnerkc/belief-ecology](https://github.com/moonrunnerkc/belief-ecology)  
-📄 Medium Abstract  
+📄 Medium Abstract - https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e 
 🌐 Visual Demo Coming Summer 2025
       `}
     />

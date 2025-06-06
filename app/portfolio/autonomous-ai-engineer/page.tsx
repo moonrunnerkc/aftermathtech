@@ -6,7 +6,7 @@ export default function AutonomousEngineerPage() {
       title="Autonomous AI Engineer"
       tech={['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS']}
       content={`
-💾 **Reflexive Memory Architecture** — Logs, chunks, vectorizes and retrieves context-aware memory.
+💾 **Reflexive Memory Architecture** — Logs, chunks, vectorizes, and retrieves context-aware memory.
 
 🧠 **Self-Evolving Logic** — Learns from past decisions and regenerates outdated logic.
 
@@ -17,8 +17,8 @@ export default function AutonomousEngineerPage() {
 🚧 In Progress:
 Summarization engine, file watchers, intent-based memory routing.
 
-🔗 GitHub: Coming Soon  
-🖥️ Local Flask Runtime (pipeline in dev)
+🔗 GitHub: _Coming Soon_  
+🖥️ Local Runtime: Runs via Flask dev server — deployment pipeline in progress.
       `}
     />
   );
