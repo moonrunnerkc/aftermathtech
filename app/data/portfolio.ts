@@ -22,7 +22,8 @@ export const projects = [
 GitHub: https://github.com/moonrunnerkc/belief-ecology  
 Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
 Live Preview: Coming soon — full system launch in late Summer 2025
-    `
+    `,
+    usage: `This project is still in development. Review the GitHub repo for cognitive architecture design. Medium write-up explains the conceptual engine. Deployment will be made available Summer 2025.`,
   },
   {
     slug: 'belief-ecology',
@@ -45,7 +46,8 @@ Live Preview: Coming soon — full system launch in late Summer 2025
 GitHub: https://github.com/moonrunnerkc/belief-ecology  
 Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
-    `
+    `,
+    usage: `Follow the GitHub repo for architecture diagrams and evolving modules. Medium abstract provides background context. Live demos will be pushed in the next release cycle.`,
   },
   {
     slug: 'autonomous-ai-engineer',
@@ -65,7 +67,8 @@ Live Preview: Coming soon — full demo module with mutation cycles and visualiz
 
 GitHub: Coming soon  
 Live Preview: Runs locally via Flask dev server — deployment pipeline in development
-    `
+    `,
+    usage: `Clone the repo. Launch Flask server. Load a code project. The assistant uses historical logs + semantic vector recall to assist coding sessions. Local-only for now.`,
   },
   {
     slug: 'lunarbeacon',
@@ -80,7 +83,8 @@ Live Preview: Runs locally via Flask dev server — deployment pipeline in devel
 🔹 Built for defense, satellite, and cybersecurity operations
 
 Live Demo: https://lunarbeacon.netlify.app/
-    `
+    `,
+    usage: `Open the demo and simulate a spoofed satellite signal scenario. The system will validate it using moon position data and return a threat probability.`,
   },
   {
     slug: 'killgrid',
@@ -94,7 +98,8 @@ Live Demo: https://lunarbeacon.netlify.app/
 🔹 Requires zero backend — runs anywhere
 
 Live: https://killgrid-ai.netlify.app/
-    `
+    `,
+    usage: `Feed in satellite telemetry and watch real-time proximity events. Collision prediction is shown on the dashboard. Runs locally or via Docker container.`,
   },
   {
     slug: 'neutronvault',
@@ -109,7 +114,8 @@ Live: https://killgrid-ai.netlify.app/
 🔹 Offline-capable once seeded
 
 Coming Soon
-    `
+    `,
+    usage: `Deploy the backend. Initialize with pulsar seed entropy. Use the frontend to generate quantum-resilient encryption keys.`,
   },
   {
     slug: 'fridge',
@@ -123,7 +129,8 @@ Coming Soon
 🔹 Built for performance and clarity
 
 Live: https://whats-in-my-fridge-two.vercel.app/
-    `
+    `,
+    usage: `Go to the app. Upload a fridge photo or list ingredients. GPT returns optimized recipe suggestions.`,
   },
   {
     slug: 'promptforge',
@@ -137,7 +144,8 @@ Live: https://whats-in-my-fridge-two.vercel.app/
 🔹 Accessible, fast, and open-source aligned
 
 Live: https://promptforge-app.netlify.app/
-    `
+    `,
+    usage: `Create a new prompt block. Set behavior. Test output across GPT configurations. Ideal for internal dev/testing cycles.`,
   },
   {
     slug: 'estimator',
@@ -151,7 +159,8 @@ Live: https://promptforge-app.netlify.app/
 🔹 Powered by OpenAI chat completions API
 
 Try It Now: https://www.aftermathtech.com/estimator
-    `
+    `,
+    usage: `Open the app. Describe your project idea. You’ll get an estimate of dev hours, budget range, tech stack, and required skills.`,
   },
   {
     slug: 'match-me',
@@ -165,6 +174,7 @@ Try It Now: https://www.aftermathtech.com/estimator
 🔹 Built with fuzzy match + GPT validation
 
 Try It Now: https://www.aftermathtech.com/match-me
-    `
+    `,
+    usage: `Describe your goal — GPT matches it to a specific Aftermath offering. You get redirected + visually scrolled to the right section.`,
   },
 ];
