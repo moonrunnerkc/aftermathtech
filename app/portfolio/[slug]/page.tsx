@@ -1,27 +1,25 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
-// Extracts the first URL from a line of text
 function extractUrl(text: string): string {
   const match = text.match(/https?:\/\/[^\s)]+/);
   return match ? match[0] : '#';
 }
 
-// ✅ Static generation params
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-// ✅ Correct type for App Router route handler props
-type PageProps = {
+// ✅ STRONG TYPING, NOT INFERRED
+type Props = {
   params: {
     slug: string;
   };
 };
 
-export default function ProjectPage({ params }: PageProps) {
+export default function Page({ params }: Props) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
