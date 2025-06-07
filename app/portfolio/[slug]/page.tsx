@@ -14,9 +14,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+export default function Page({ params }: { params: { slug: string } }) {
+  const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
   return (
@@ -46,32 +45,35 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             trimmed.startsWith('🌱') ||
             trimmed.startsWith('💾') ||
             trimmed.startsWith('📂') ||
-            trimmed.startsWith('🧪') ||
             trimmed.startsWith('🔬') ||
-            trimmed.startsWith('🛰️') ||
-            trimmed.startsWith('🔐') ||
-            trimmed.startsWith('🎯') ||
-            trimmed.startsWith('💡') ||
-            trimmed.startsWith('🧭') ||
-            trimmed.startsWith('🪞') ||
+            trimmed.startsWith('🧪') ||
             trimmed.startsWith('⚖️') ||
             trimmed.startsWith('🧬') ||
-            trimmed.startsWith('🌐') ||
-            trimmed.startsWith('Live') ||
-            trimmed.startsWith('Try')
+            trimmed.startsWith('🪞') ||
+            trimmed.startsWith('🧭')
           ) {
             return <p key={idx}>{trimmed}</p>;
           }
 
           if (
+            trimmed.startsWith('🌐') ||
+            trimmed.startsWith('Live') ||
+            trimmed.startsWith('Try') ||
             trimmed.startsWith('GitHub:') ||
             trimmed.startsWith('Medium:')
           ) {
-            const label = trimmed.startsWith('GitHub:') ? 'GitHub Repo' : 'Medium Article';
+            const url = extractUrl(trimmed);
+            let label = 'Visit Project';
+
+            if (trimmed.startsWith('GitHub:')) label = 'GitHub Repo';
+            else if (trimmed.startsWith('Medium:')) label = 'Medium Article';
+            else if (trimmed.startsWith('Try')) label = 'Try It Now';
+            else if (trimmed.startsWith('Live')) label = 'Live Demo';
+
             return (
               <p key={idx} className="mt-4">
                 <a
-                  href={extractUrl(trimmed)}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-4 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
