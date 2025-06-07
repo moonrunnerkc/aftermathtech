@@ -1,25 +1,28 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
+// Static route param type
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
+// URL parser for markdown-style links
 function extractUrl(text: string): string {
   const match = text.match(/https?:\/\/[^\s)]+/);
   return match ? match[0] : '#';
 }
 
+// Static route generation
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-// ✅ VERCEL + NEXT 15 COMPATIBLE TYPE
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default function Page({ params }: PageProps) {
+// Main dynamic page component
+export default function Page({ params }: Params) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
