@@ -7,22 +7,21 @@ function extractUrl(text: string): string {
   return match ? match[0] : '#';
 }
 
-// ✅ Required by Next.js for static generation
+// ✅ Static generation params
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-// ✅ Define route params type
+// ✅ Correct type for App Router route handler props
 type PageProps = {
   params: {
     slug: string;
   };
 };
 
-// ✅ Page component typed to match Next.js App Router expectations
-export default function Page({ params }: PageProps) {
+export default function ProjectPage({ params }: PageProps) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
