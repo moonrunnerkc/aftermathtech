@@ -12,14 +12,14 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ STRONG TYPING, NOT INFERRED
-type Props = {
+// ✅ VERCEL + NEXT 15 COMPATIBLE TYPE
+type PageProps = {
   params: {
     slug: string;
   };
 };
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: PageProps) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
