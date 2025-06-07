@@ -2,11 +2,11 @@
 
 import { ProjectDetail } from '@/components/ProjectDetail';
 import Link from 'next/link';
-import { FaLink } from 'react-icons/fa';
+import { FaGithub, FaMedium } from 'react-icons/fa';
 
 export default function BlackboxMindPage() {
   return (
-    <div>
+    <div className="text-white px-4 py-12 max-w-4xl mx-auto">
       <ProjectDetail
         title="Blackbox Mind v3: Meta-Cognitive Synthetic Intelligence+"
         tech={[
@@ -21,31 +21,31 @@ export default function BlackboxMindPage() {
           'SQLite',
         ]}
         content={`
-🧠 **Belief Ecology Engine** — Dynamic mental ecosystem where beliefs mutate, compete, and decay naturally.
+🧠 Belief Ecology Engine — Dynamic mental ecosystem where beliefs mutate, compete, and decay naturally.
 
-⚖️ **Recursive Contradiction Tracing** — Logs failures and their causal chains for deeper correction.
+⚖️ Recursive Contradiction Tracing — Logs failures and their causal chains for deeper correction.
 
-🧬 **Contradiction-Formed Identity** — System evolves identity based on internal contradictions.
+🧬 Contradiction-Formed Identity — System evolves identity based on internal contradictions.
 
-🪞 **Meta-Observer Agent** — Monitors identity drift, decay, and decision cycles — enabling self-awareness.
+🪞 Meta-Observer Agent — Monitors identity drift, decay, and decision cycles — enabling self-awareness.
 
-🧭 **Adaptive Goal Collapse** — Lets the system reshape its goals as beliefs shift.
+🧭 Adaptive Goal Collapse — Lets the system reshape its goals as beliefs shift.
 
-🚧 In Development:  
+🚧 In Development:
 Symbolic logic validator, goal forking engine, introspection graph, and simulated inner voice layer.
 
 🌐 Live Preview: Coming Summer 2025
         `}
       />
 
-      <div className="flex flex-wrap justify-center gap-4 mt-10">
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
         <Link
           href="https://github.com/moonrunnerkc/belief-ecology"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
         >
-          <FaLink />
+          <FaGithub />
           GitHub Repo
         </Link>
 
@@ -55,7 +55,7 @@ Symbolic logic validator, goal forking engine, introspection graph, and simulate
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-500 transition"
         >
-          <FaLink />
+          <FaMedium />
           Medium Abstract
         </Link>
       </div>
