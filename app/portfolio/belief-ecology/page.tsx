@@ -1,51 +1,61 @@
 'use client';
 
 import { ProjectDetail } from '@/components/ProjectDetail';
+import { projects } from '@/data/portfolio';
 import Link from 'next/link';
-import { FaLink } from 'react-icons/fa';
+import { FaGithub, FaMedium } from 'react-icons/fa';
 
 export default function BeliefEcologyPage() {
+  const project = projects.find((p) => p.slug === 'belief-ecology');
+
+  if (!project) return <div className="text-red-500">Project not found.</div>;
+
   return (
-    <div>
+    <div className="text-white px-4 py-12 max-w-4xl mx-auto">
       <ProjectDetail
-        title="Belief Ecology: A Self-Regulating Cognitive Memory Architecture"
-        tech={['Python', 'Neo4j', 'SQLite', 'networkx', 'matplotlib', 'graphviz']}
-        content={`
-🌱 **Living Belief Ecosystem** — Beliefs have fitness scores, mutate, decay, and die.
-
-🔁 **Self-Regulation** — Internal conflict and relevance decay rebalance the belief pool.
-
-🧠 **Core of Blackbox v3** — Used in memory substrate and evolving reasoning.
-
-🔬 **Independent Module** — Portable cognitive engine for any autonomous system.
-
-🚧 Upcoming:  
-Emotion-weighted reinforcement, entropy models, and ecosystem visualization.
-
-🌐 Visual Demo Coming Summer 2025
-        `}
+        title={project.title}
+        tech={project.tech}
+        content={project.content}
       />
 
-      <div className="flex gap-4 justify-center mt-8">
-        <Link
-          href="https://github.com/moonrunnerkc/belief-ecology"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
-        >
-          <FaLink className="mr-2" />
-          GitHub Repo
-        </Link>
-        <Link
-          href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
-        >
-          <FaLink className="mr-2" />
-          Medium Abstract
-        </Link>
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
+        {project.github && (
+          <div className="text-center">
+            <p className="text-sm text-gray-400 mb-1">GitHub</p>
+            <Link
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
+            >
+              <FaGithub />
+              GitHub Repo
+            </Link>
+          </div>
+        )}
+
+        {project.medium && (
+          <div className="text-center">
+            <p className="text-sm text-gray-400 mb-1">Medium</p>
+            <Link
+              href={project.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-500 transition"
+            >
+              <FaMedium />
+              Medium Abstract
+            </Link>
+          </div>
+        )}
       </div>
+
+      {project.usage && (
+        <div className="mt-12 border-t border-gray-700 pt-8">
+          <h3 className="text-xl font-semibold text-neon-cyan mb-2">🛠 How to Use</h3>
+          <p className="whitespace-pre-line text-gray-300">{project.usage}</p>
+        </div>
+      )}
     </div>
   );
 }
