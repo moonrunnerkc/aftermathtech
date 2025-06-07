@@ -1,7 +1,7 @@
 // data/portfolio.ts
 
 export const projects = [
-  {
+   {
     slug: 'blackbox-mind-v3',
     title: 'Blackbox Mind v3: Meta-Cognitive Synthetic Intelligence+',
     summary: 'A contradiction-driven cognition engine that evolves its goals, beliefs, and identity — without needing human prompts.',
@@ -19,18 +19,18 @@ export const projects = [
 
 🚧 Currently building: Symbolic logic validator, goal forking engine, visual introspection graph, and LLM-simulated inner voice layer.
 
-GitHub: https://github.com/moonrunnerkc/belief-ecology  
-Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
-Live Preview: Coming soon — full system launch in late Summer 2025
+🌐 Live Preview: Coming soon — full system launch in late Summer 2025
     `,
+    github: 'https://github.com/moonrunnerkc/belief-ecology',
+    medium: 'https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e',
     usage: `This project is still in development. Review the GitHub repo for cognitive architecture design. Medium write-up explains the conceptual engine. Deployment will be made available Summer 2025.`,
   },
   {
-    slug: 'belief-ecology',
-    title: 'Belief Ecology: A Self-Regulating Cognitive Memory Architecture',
-    summary: 'A novel cognitive structure where beliefs act like biological entities — evolving, competing, and mutating within an autonomous AI mind.',
-    tech: ['Python', 'Neo4j', 'SQLite', 'networkx', 'matplotlib', 'graphviz'],
-    content: `
+  slug: 'belief-ecology',
+  title: 'Belief Ecology: A Self-Regulating Cognitive Memory Architecture',
+  summary: 'A novel cognitive structure where beliefs act like biological entities — evolving, competing, and mutating within an autonomous AI mind.',
+  tech: ['Python', 'Neo4j', 'SQLite', 'networkx', 'matplotlib', 'graphviz'],
+  content: `
 🌱 Living Belief Ecosystem — beliefs are treated as organic units with fitness scores, subject to reinforcement, decay, mutation, and death.
 
 🔁 Self-Regulation — the system rebalances its belief pool over time based on internal conflict, relevance decay, and emotional tags.
@@ -43,33 +43,34 @@ Live Preview: Coming soon — full system launch in late Summer 2025
 
 🚧 In development: Emotion-weighted reinforcement logic, decay entropy models, and ecological replay prioritization.
 
-GitHub: https://github.com/moonrunnerkc/belief-ecology  
-Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
-Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
-    `,
-    usage: `Follow the GitHub repo for architecture diagrams and evolving modules. Medium abstract provides background context. Live demos will be pushed in the next release cycle.`,
-  },
+🌐 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
+  `,
+  github: 'https://github.com/moonrunnerkc/belief-ecology',
+  medium: 'https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e',
+  usage: `Follow the GitHub repo for architecture diagrams and evolving modules. Medium abstract provides background context. Live demos will be pushed in the next release cycle.`,
+},
   {
-    slug: 'autonomous-ai-engineer',
-    title: 'Autonomous AI Engineer',
-    summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
-    tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
-    content: `
-💾 Reflexive memory architecture: Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
+  slug: 'autonomous-ai-engineer',
+  title: 'Autonomous AI Engineer',
+  summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
+  tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
+  content: `
+💾 Reflexive memory architecture — Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
 
-🧠 Self-evolving logic: The AI can recall past decisions, codebases, and conversation threads to refine its own modules and regenerate stale logic over time.
+🧠 Self-evolving logic — Recalls past decisions, codebases, and conversations to refine internal modules and regenerate stale logic over time.
 
-📂 File-context-aware prompts: Dynamically injects relevant memory based on active file selection and surrounding intent—eliminating redundant context entry.
+📂 File-context-aware prompts — Injects scoped memory based on current file and intent — no redundant prompt entry.
 
-🔍 Custom local vector store: Entirely offline memory index (FAISS + JSON) scoped by project, tags, and timestamps, supporting top-K semantic queries with pruning logic.
+🔍 Offline vector store — FAISS-based semantic index scoped by project, tag, and timestamp with pruning logic.
 
-🧪 Under construction: Summarization engine for long-term memory compaction, live file watchers for auto-context refresh, and intent-based memory routing are being implemented.
+🧪 Under construction: Summarization engine, file watchers, and intent-based memory routing.
 
-GitHub: Coming soon  
-Live Preview: Runs locally via Flask dev server — deployment pipeline in development
-    `,
-    usage: `Clone the repo. Launch Flask server. Load a code project. The assistant uses historical logs + semantic vector recall to assist coding sessions. Local-only for now.`,
-  },
+🌐 Live Preview: Runs locally via Flask dev server — deployment pipeline in development
+  `,
+  github: '', // Placeholder since link is "Coming soon"
+  medium: '', // No Medium link was provided
+  usage: `Clone the repo. Launch Flask server. Load a code project. The assistant uses historical logs + semantic vector recall to assist coding sessions. Local-only for now.`,
+},
   {
     slug: 'lunarbeacon',
     title: 'LunarBeacon AI',
