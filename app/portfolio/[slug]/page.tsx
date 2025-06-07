@@ -1,5 +1,3 @@
-// app/portfolio/[slug]/page.tsx
-
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
@@ -8,12 +6,14 @@ function extractUrl(text: string): string {
   return match ? match[0] : '#';
 }
 
+// Used by Next.js to statically generate paths
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
+// ✅ FIXED: Removed `Promise` from param type
 export default function Page({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
