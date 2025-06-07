@@ -1,6 +1,7 @@
-export const projects = [
+// data/portfolio.ts
 
-    {
+export const projects = [
+  {
     slug: 'blackbox-mind-v3',
     title: 'Blackbox Mind v3: Meta-Cognitive Synthetic Intelligence+',
     summary: 'A contradiction-driven cognition engine that evolves its goals, beliefs, and identity — without needing human prompts.',
@@ -18,16 +19,9 @@ export const projects = [
 
 🚧 Currently building: Symbolic logic validator, goal forking engine, visual introspection graph, and LLM-simulated inner voice layer.
 
-<div class="flex gap-4 mt-4">
-  <a href="https://github.com/moonrunnerkc/belief-ecology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
-    🔗 GitHub Repo
-  </a>
-  <a href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-blue-600 text-white px-4 py-2 font-semibold rounded hover:bg-blue-500">
-    📄 Medium Abstract
-  </a>
-</div>
-
-🔗 Live Preview: Coming soon — full system launch in late Summer 2025
+GitHub: https://github.com/moonrunnerkc/belief-ecology  
+Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
+Live Preview: Coming soon — full system launch in late Summer 2025
     `
   },
   {
@@ -48,48 +42,31 @@ export const projects = [
 
 🚧 In development: Emotion-weighted reinforcement logic, decay entropy models, and ecological replay prioritization.
 
-<div class="flex gap-4 mt-4">
-  <a href="https://github.com/moonrunnerkc/belief-ecology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
-    🔗 GitHub Repo
-  </a>
-  <a href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-blue-600 text-white px-4 py-2 font-semibold rounded hover:bg-blue-500">
-    📄 Medium Abstract
-  </a>
-</div>
-
-🔗 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
+GitHub: https://github.com/moonrunnerkc/belief-ecology  
+Medium: https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e  
+Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
     `
   },
   {
-  slug: 'autonomous-ai-engineer',
-  title: 'Autonomous AI Engineer',
-  summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
-  tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
-  content: `
-💾 **Reflexive Memory Architecture** — Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
+    slug: 'autonomous-ai-engineer',
+    title: 'Autonomous AI Engineer',
+    summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
+    tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
+    content: `
+💾 Reflexive memory architecture: Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
 
-🧠 **Self-Evolving Logic** — Recalls past decisions, codebases, and conversations to refine internal modules and regenerate stale logic over time.
+🧠 Self-evolving logic: The AI can recall past decisions, codebases, and conversation threads to refine its own modules and regenerate stale logic over time.
 
-📂 **File-Context-Aware Prompts** — Injects scoped memory based on current file and intent — no redundant prompt entry.
+📂 File-context-aware prompts: Dynamically injects relevant memory based on active file selection and surrounding intent—eliminating redundant context entry.
 
-🔍 **Offline Vector Store** — FAISS-based semantic index scoped by project, tag, and timestamp with pruning logic.
+🔍 Custom local vector store: Entirely offline memory index (FAISS + JSON) scoped by project, tags, and timestamps, supporting top-K semantic queries with pruning logic.
 
-🚧 In Development: Summarization engine, file watchers, and intent-based memory routing.
+🧪 Under construction: Summarization engine for long-term memory compaction, live file watchers for auto-context refresh, and intent-based memory routing are being implemented.
 
-<div class="flex gap-4 mt-4">
-  <a href="https://github.com/moonrunnerkc/autonomous-ai-engineer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
-    🔗 GitHub Repo
-  </a>
-  <span class="inline-flex items-center bg-gray-600 text-white px-4 py-2 font-semibold rounded opacity-50 cursor-not-allowed">
-    🖥️ Live Preview Coming Soon
-  </span>
-</div>
-  `,
-  usage: `Clone the repo and run the Flask server locally.  
-Load any prior sessions to see how the AI tracks memory and decision context.  
-Open-source mode will support hybrid offline/online orchestration.`,
-},
-  
+GitHub: Coming soon  
+Live Preview: Runs locally via Flask dev server — deployment pipeline in development
+    `
+  },
   {
     slug: 'lunarbeacon',
     title: 'LunarBeacon AI',
@@ -102,10 +79,8 @@ Open-source mode will support hybrid offline/online orchestration.`,
 🔹 Uses GPT-4 + orbital telemetry for intelligent checks  
 🔹 Built for defense, satellite, and cybersecurity operations
 
-🌐 [Live Demo](https://lunarbeacon.netlify.app/)
-    `,
-    usage: `Visit the demo. Simulate a command scenario or choose a test pattern.  
-LunarBeacon will analyze signal reliability and flag authenticity issues. GPT assists in commentary.`,
+Live Demo: https://lunarbeacon.netlify.app/
+    `
   },
   {
     slug: 'killgrid',
@@ -118,11 +93,8 @@ LunarBeacon will analyze signal reliability and flag authenticity issues. GPT as
 🔹 Fully containerized with a live, encrypted dashboard  
 🔹 Requires zero backend — runs anywhere
 
-🌐 [KillGrid Live](https://killgrid-ai.netlify.app/)
-    `,
-    usage: `Run the dashboard locally or via container.  
-Feed in satellite coordinates or simulate orbits.  
-Watch real-time threat zones and predicted collision alerts.`,
+Live: https://killgrid-ai.netlify.app/
+    `
   },
   {
     slug: 'neutronvault',
@@ -136,12 +108,8 @@ Watch real-time threat zones and predicted collision alerts.`,
 🔹 Verifiable identities, no third-party reliance  
 🔹 Offline-capable once seeded
 
- --- [Coming Soon] ---
-    `,
-    usage: `NeutronVault is a backend tool. To use:
-- Deploy the FastAPI server
-- Configure pulsar seed entropy
-- Use the dashboard to generate and validate cryptographic keys`,
+Coming Soon
+    `
   },
   {
     slug: 'fridge',
@@ -154,10 +122,8 @@ Watch real-time threat zones and predicted collision alerts.`,
 🔹 Designed to prove real-world AI utility in daily life  
 🔹 Built for performance and clarity
 
-🌐 [Live](https://whats-in-my-fridge-two.vercel.app/)
-    `,
-    usage: `Upload a photo of your fridge or type your ingredients.  
-GPT will return suggested meals based on available items.`,
+Live: https://whats-in-my-fridge-two.vercel.app/
+    `
   },
   {
     slug: 'promptforge',
@@ -170,10 +136,8 @@ GPT will return suggested meals based on available items.`,
 🔹 Great for internal prompt tuning and client demos  
 🔹 Accessible, fast, and open-source aligned
 
-🌐 [Live](https://promptforge-app.netlify.app/)
-    `,
-    usage: `Write your prompt, choose model behavior, and run it live.  
-Use this to prototype responses and share with collaborators.`,
+Live: https://promptforge-app.netlify.app/
+    `
   },
   {
     slug: 'estimator',
@@ -185,10 +149,9 @@ Use this to prototype responses and share with collaborators.`,
 🔹 Uses GPT-4 with tuned system prompt  
 🔹 Fully responsive, real-time output  
 🔹 Powered by OpenAI chat completions API
-🌐 [Try It Now](https://www.aftermathtech.com/estimator)
-    `,
-    usage: `Describe your project idea clearly.  
-GPT will return an estimate with hours, budget, tech stack, and required skills.`,
+
+Try It Now: https://www.aftermathtech.com/estimator
+    `
   },
   {
     slug: 'match-me',
@@ -200,10 +163,8 @@ GPT will return an estimate with hours, budget, tech stack, and required skills.
 🔹 GPT maps it to the right service  
 🔹 Auto-scrolls and highlights result  
 🔹 Built with fuzzy match + GPT validation
-🌐 [Try It Now](https://www.aftermathtech.com/match-me)
-    `,
-    usage: `Just describe your goal (e.g. "I need a pitch deck AI" or "I want to train my own GPT").  
-The system maps it to the right Aftermath service and redirects you instantly.`,
+
+Try It Now: https://www.aftermathtech.com/match-me
+    `
   },
 ];
-
