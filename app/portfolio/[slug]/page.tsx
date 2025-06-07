@@ -13,6 +13,7 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
+
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
