@@ -1,29 +1,22 @@
+// app/portfolio/[slug]/page.tsx
+
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
-type ProjectParams = {
-  params: {
-    slug: string;
-  };
-};
-
-// Ensure URL extraction works for any line with a raw link
 function extractUrl(text: string): string {
   const match = text.match(/https?:\/\/[^\s)]+/);
   return match ? match[0] : '#';
 }
 
-// ✅ Static route generation
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-// ✅ Main render component (non-async, typed properly)
-export default function Page({ params }: { params: { slug: string } })
-{
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
   return (
@@ -46,23 +39,35 @@ export default function Page({ params }: { params: { slug: string } })
         {project.content.split('\n').map((line, idx) => {
           const trimmed = line.trim();
 
-          // 🧠 Filter for common bullet lines
           if (
-            ['🔹', '🧠', '🚧', '🌱', '💾', '📂', '🔬', '🛰️', '🎯', '🔐'].some((symbol) =>
-              trimmed.startsWith(symbol)
-            )
+            trimmed.startsWith('🔹') ||
+            trimmed.startsWith('🧠') ||
+            trimmed.startsWith('🚧') ||
+            trimmed.startsWith('🌱') ||
+            trimmed.startsWith('💾') ||
+            trimmed.startsWith('📂') ||
+            trimmed.startsWith('🧪') ||
+            trimmed.startsWith('🔬') ||
+            trimmed.startsWith('🛰️') ||
+            trimmed.startsWith('🔐') ||
+            trimmed.startsWith('🎯') ||
+            trimmed.startsWith('💡') ||
+            trimmed.startsWith('🧭') ||
+            trimmed.startsWith('🪞') ||
+            trimmed.startsWith('⚖️') ||
+            trimmed.startsWith('🧬') ||
+            trimmed.startsWith('🌐') ||
+            trimmed.startsWith('Live') ||
+            trimmed.startsWith('Try')
           ) {
             return <p key={idx}>{trimmed}</p>;
           }
 
-          // 🌐 Render external links as buttons
           if (
-            trimmed.startsWith('🌐') ||
-            trimmed.startsWith('Live') ||
-            trimmed.startsWith('Try') ||
             trimmed.startsWith('GitHub:') ||
             trimmed.startsWith('Medium:')
           ) {
+            const label = trimmed.startsWith('GitHub:') ? 'GitHub Repo' : 'Medium Article';
             return (
               <p key={idx} className="mt-4">
                 <a
@@ -71,12 +76,7 @@ export default function Page({ params }: { params: { slug: string } })
                   rel="noopener noreferrer"
                   className="inline-block px-4 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
                 >
-                  🔗{' '}
-                  {trimmed.startsWith('GitHub')
-                    ? 'GitHub Repo'
-                    : trimmed.startsWith('Medium')
-                    ? 'Medium Article'
-                    : 'Visit Project'}
+                  🔗 {label}
                 </a>
               </p>
             );
