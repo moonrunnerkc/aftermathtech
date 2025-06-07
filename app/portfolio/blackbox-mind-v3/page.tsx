@@ -38,23 +38,24 @@ Symbolic logic validator, goal forking engine, introspection graph, and simulate
         `}
       />
 
-      <div className="flex gap-4 justify-center mt-8">
+      <div className="flex flex-wrap justify-center gap-4 mt-10">
         <Link
           href="https://github.com/moonrunnerkc/belief-ecology"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
+          className="inline-flex items-center gap-2 px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
         >
-          <FaLink className="mr-2" />
+          <FaLink />
           GitHub Repo
         </Link>
+
         <Link
           href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2 bg-green-600 text-black font-semibold rounded hover:bg-green-500 transition"
+          className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-500 transition"
         >
-          <FaLink className="mr-2" />
+          <FaLink />
           Medium Abstract
         </Link>
       </div>
