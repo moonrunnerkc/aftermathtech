@@ -21,7 +21,8 @@ export function generateStaticParams() {
 }
 
 // ✅ Main render component (non-async, typed properly)
-export default function Page({ params }: ProjectParams) {
+export default function Page({ params }: { params: { slug: string } })
+{
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
