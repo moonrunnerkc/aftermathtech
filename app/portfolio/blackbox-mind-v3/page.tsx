@@ -26,13 +26,14 @@ export default function BlackboxMindPage() {
 
 🧭 **Adaptive Goal Collapse** — Lets the system reshape its goals as beliefs shift.
 
-🚧 In Development:
+🚧 In Development:  
 Symbolic logic validator, goal forking engine, introspection graph, and simulated inner voice layer.
 
 🔗 [GitHub Repo](https://github.com/moonrunnerkc/belief-ecology)  
-📄 [Medium Abstract – Belief Ecology](📄 Medium Abstract - https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e)  
+📄 [Medium Abstract – Belief Ecology](https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e)  
 🌐 Live Preview: Coming Summer 2025
       `}
     />
   );
 }
+
