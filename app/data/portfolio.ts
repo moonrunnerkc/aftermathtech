@@ -1,11 +1,12 @@
 export const projects = [
 
-  {
+    {
     slug: 'blackbox-mind-v3',
     title: 'Blackbox Mind v3: Meta-Cognitive Synthetic Intelligence+',
     summary: 'A contradiction-driven cognition engine that evolves its goals, beliefs, and identity — without needing human prompts.',
     tech: ['Python', 'Z3 Theorem Prover', 'llama.cpp', 'Neo4j', 'networkx', 'matplotlib', 'graphviz', 'JSON', 'SQLite'],
-    content: `🧠 Belief Ecology Engine forms a dynamic mental ecosystem where beliefs mutate, compete, and decay naturally.
+    content: `
+🧠 Belief Ecology Engine forms a dynamic mental ecosystem where beliefs mutate, compete, and decay naturally.
 
 ⚖️ Recursive Contradiction Tracing logs not just failures but the causal chain behind them, enabling long-term correction.
 
@@ -17,39 +18,25 @@ export const projects = [
 
 🚧 Currently building: Symbolic logic validator, goal forking engine, visual introspection graph, and LLM-simulated inner voice layer.
 
-🔗 GitHub Repo: https://github.com/moonrunnerkc/belief-ecology
+<div class="flex gap-4 mt-4">
+  <a href="https://github.com/moonrunnerkc/belief-ecology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
+    🔗 GitHub Repo
+  </a>
+  <a href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-blue-600 text-white px-4 py-2 font-semibold rounded hover:bg-blue-500">
+    📄 Medium Abstract
+  </a>
+</div>
 
-🔗 Medium Abstract: Belief Ecology: A Self-Regulating Cognitive Memory Architecture
-
-🔗 Live Preview: Coming soon — full system launch in late Summer 2025`
-  },
-  {
-    slug: 'autonomous-ai-engineer',
-    title: 'Autonomous AI Engineer',
-    summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
-    tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
-    content: `💾 Reflexive memory architecture: Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
-
-🧠 Self-evolving logic: The AI can recall past decisions, codebases, and conversation threads to refine its own modules and regenerate stale logic over time.
-
-📂 File-context-aware prompts: Dynamically injects relevant memory based on active file selection and surrounding intent—eliminating redundant context entry.
-
-🔍 Custom local vector store: Entirely offline memory index (FAISS + JSON) scoped by project, tags, and timestamps, supporting top-K semantic queries with pruning logic.
-
-🧪 Under construction: Summarization engine for long-term memory compaction, live file watchers for auto-context refresh, and intent-based memory routing are being implemented.
-
-🔗 GitHub: Coming soon
-
-🔗 Live preview: Runs locally via Flask dev server — deployment pipeline in development
-
-Notes: Open source plans are queued for post-Week 4 milestone (hybrid online/offline mode)`
+🔗 Live Preview: Coming soon — full system launch in late Summer 2025
+    `
   },
   {
     slug: 'belief-ecology',
     title: 'Belief Ecology: A Self-Regulating Cognitive Memory Architecture',
     summary: 'A novel cognitive structure where beliefs act like biological entities — evolving, competing, and mutating within an autonomous AI mind.',
     tech: ['Python', 'Neo4j', 'SQLite', 'networkx', 'matplotlib', 'graphviz'],
-    content: `🌱 Living Belief Ecosystem — beliefs are treated as organic units with fitness scores, subject to reinforcement, decay, mutation, and death.
+    content: `
+🌱 Living Belief Ecosystem — beliefs are treated as organic units with fitness scores, subject to reinforcement, decay, mutation, and death.
 
 🔁 Self-Regulation — the system rebalances its belief pool over time based on internal conflict, relevance decay, and emotional tags.
 
@@ -61,12 +48,47 @@ Notes: Open source plans are queued for post-Week 4 milestone (hybrid online/off
 
 🚧 In development: Emotion-weighted reinforcement logic, decay entropy models, and ecological replay prioritization.
 
-🔗 GitHub Repo: https://github.com/moonrunnerkc/belief-ecology
+<div class="flex gap-4 mt-4">
+  <a href="https://github.com/moonrunnerkc/belief-ecology" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
+    🔗 GitHub Repo
+  </a>
+  <a href="https://medium.com/@bradkinnard/belief-ecology-a-self-regulating-cognitive-memory-architecture-for-autonomous-ai-systems-b113e2f0c36e" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-blue-600 text-white px-4 py-2 font-semibold rounded hover:bg-blue-500">
+    📄 Medium Abstract
+  </a>
+</div>
 
-🔗 Medium Abstract: Belief Ecology: A Self-Regulating Cognitive Memory Architecture for Autonomous AI Systems
-
-🔗 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025`
+🔗 Live Preview: Coming soon — full demo module with mutation cycles and visualized ecosystem planned for Summer 2025
+    `
   },
+  {
+  slug: 'autonomous-ai-engineer',
+  title: 'Autonomous AI Engineer',
+  summary: 'Autonomous AI engineer with self-structuring memory, reflexive planning, and zero-human reliance.',
+  tech: ['llama.cpp', 'FAISS', 'Flask', 'Vanilla JS', 'PyTorch', 'Markdown', 'HTML/CSS'],
+  content: `
+💾 **Reflexive Memory Architecture** — Daily logs are persistently stored, chunked, vectorized, and semantically retrieved for context-aware planning and regeneration.
+
+🧠 **Self-Evolving Logic** — Recalls past decisions, codebases, and conversations to refine internal modules and regenerate stale logic over time.
+
+📂 **File-Context-Aware Prompts** — Injects scoped memory based on current file and intent — no redundant prompt entry.
+
+🔍 **Offline Vector Store** — FAISS-based semantic index scoped by project, tag, and timestamp with pruning logic.
+
+🚧 In Development: Summarization engine, file watchers, and intent-based memory routing.
+
+<div class="flex gap-4 mt-4">
+  <a href="https://github.com/moonrunnerkc/autonomous-ai-engineer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-600 text-black px-4 py-2 font-semibold rounded hover:bg-green-500">
+    🔗 GitHub Repo
+  </a>
+  <span class="inline-flex items-center bg-gray-600 text-white px-4 py-2 font-semibold rounded opacity-50 cursor-not-allowed">
+    🖥️ Live Preview Coming Soon
+  </span>
+</div>
+  `,
+  usage: `Clone the repo and run the Flask server locally.  
+Load any prior sessions to see how the AI tracks memory and decision context.  
+Open-source mode will support hybrid offline/online orchestration.`,
+},
   
   {
     slug: 'lunarbeacon',
