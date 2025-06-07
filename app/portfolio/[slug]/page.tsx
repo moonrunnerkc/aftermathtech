@@ -1,20 +1,28 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/portfolio';
 
+// Extracts the first URL from a line of text
 function extractUrl(text: string): string {
   const match = text.match(/https?:\/\/[^\s)]+/);
   return match ? match[0] : '#';
 }
 
-// Used by Next.js to statically generate paths
+// ✅ Required by Next.js for static generation
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
-// ✅ FIXED: Removed `Promise` from param type
-export default function Page({ params }: { params: { slug: string } }) {
+// ✅ Define route params type
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+// ✅ Page component typed to match Next.js App Router expectations
+export default function Page({ params }: PageProps) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
