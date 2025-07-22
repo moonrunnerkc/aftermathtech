@@ -1,0 +1,403 @@
+/* styles/globals.css - Enhanced Neon-Cyber Theme with Optimizations */
+@import "tailwindcss";
+
+/* Custom CSS Variables for Neon Theme */
+:root {
+  --neon-cyan: #00ffff;
+  --neon-purple: #8b5cf6;
+  --neon-pink: #ec4899;
+  --neon-green: #10b981;
+  --glow-cyan: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+  --glow-purple: 0 0 20px #8b5cf6, 0 0 40px #8b5cf6, 0 0 60px #8b5cf6;
+  --glow-pink: 0 0 20px #ec4899, 0 0 40px #ec4899, 0 0 60px #ec4899;
+  --glow-intensity: 0.5;
+  --title-glow: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0a0a0a;
+  overflow-x: hidden;
+}
+
+/* Enhanced Background Effects */
+.cyber-bg {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%);
+  position: relative;
+}
+
+.cyber-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* OPTIMIZED Grid Pattern Background - Much Reduced Visibility */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.15; /* Significantly reduced from 0.4 */
+}
+
+/* OPTIMIZED Neon Text Effects - Reduced Glow for Mobile */
+.neon-text {
+  text-shadow: var(--glow-cyan);
+  animation: neon-flicker 2s ease-in-out infinite alternate;
+}
+
+.neon-text-reduced {
+  text-shadow: 0 0 var(--title-glow) rgba(0, 255, 255, var(--glow-intensity));
+  animation: neon-flicker-reduced 2s ease-in-out infinite alternate;
+}
+
+.neon-text-purple {
+  text-shadow: var(--glow-purple);
+  animation: neon-flicker-purple 2.5s ease-in-out infinite alternate;
+}
+
+.neon-text-pink {
+  text-shadow: var(--glow-pink);
+  animation: neon-flicker-pink 3s ease-in-out infinite alternate;
+}
+
+/* Mobile-specific title optimizations */
+@media (max-width: 768px) {
+  :root {
+    --title-glow: 1px;
+    --glow-intensity: 0.3;
+  }
+  
+  .neon-text-reduced {
+    text-shadow: 0 0 1px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --title-glow: 1px;
+    --glow-intensity: 0.25;
+  }
+}
+
+/* Enhanced Button Styles */
+.cyber-button {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.cyber-button:hover {
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.6),
+    0 0 60px rgba(0, 255, 255, 0.4),
+    inset 0 0 30px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+/* Card Hover Effects */
+.cyber-card {
+  background: rgba(15, 15, 35, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-card:hover::before {
+  opacity: 1;
+}
+
+.cyber-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Enhanced CSS Particles Animation */
+.enhanced-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(95vh) translateX(0px) rotate(18deg) scale(1);
+  }
+  50% {
+    transform: translateY(50vh) translateX(50px) rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(5vh) translateX(-30px) rotate(320deg) scale(0.8);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0px) rotate(360deg) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes neon-flicker {
+  0%, 100% { 
+    text-shadow: var(--glow-cyan);
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 
+      0 0 10px #00ffff, 
+      0 0 20px #00ffff, 
+      0 0 30px #00ffff;
+    opacity: 0.8;
+  }
+}
+
+@keyframes neon-flicker-reduced {
+  0%, 100% { 
+    text-shadow: 0 0 var(--title-glow) rgba(0, 255, 255, var(--glow-intensity));
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 0 0 calc(var(--title-glow) * 1.5) rgba(0, 255, 255, calc(var(--glow-intensity) * 0.8));
+    opacity: 0.9;
+  }
+}
+
+@keyframes neon-flicker-purple {
+  0%, 100% { 
+    text-shadow: var(--glow-purple);
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 
+      0 0 10px #8b5cf6, 
+      0 0 20px #8b5cf6, 
+      0 0 30px #8b5cf6;
+    opacity: 0.9;
+  }
+}
+
+@keyframes neon-flicker-pink {
+  0%, 100% { 
+    text-shadow: var(--glow-pink);
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 
+      0 0 10px #ec4899, 
+      0 0 20px #ec4899, 
+      0 0 30px #ec4899;
+    opacity: 0.85;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.4);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Utility Classes */
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Particles wrapper styling */
+.particles-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00ffff, #8b5cf6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00ffff, #ec4899);
+}
+
+/* Selection Colors */
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Focus States */
+.focus-cyber:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5);
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particles-wrapper {
+    display: none;
+  }
+  
+  .neon-text,
+  .neon-text-reduced,
+  .neon-text-purple,
+  .neon-text-pink {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  :root {
+    --glow-intensity: 0.8;
+    --title-glow: 3px;
+  }
+  
+  .grid-pattern {
+    opacity: 0.25;
+  }
+  
+  .cyber-bg::before {
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+  }
+}

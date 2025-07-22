@@ -1,46 +1,55 @@
-// app/layout.tsx
 import type { Metadata } from 'next';
-import './globals.css';
-import Nav from 'components/Nav';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import '@/styles/globals.css';
+import Layout from '@/components/Layout';
+import { metadata as siteMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Aftermath Technologies',
-  description: 'Cutting-edge AI engineering by Brad Kinnard. Secure, autonomous, built to deploy.',
-  metadataBase: new URL('https://aftermathtech.com'),
-  openGraph: {
-    title: 'Aftermath Technologies',
-    description: 'Cutting-edge AI engineering by Brad Kinnard. Secure, autonomous, built to deploy.',
-    url: 'https://aftermathtech.com',
-    siteName: 'Aftermath Technologies',
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Aftermath Technologies OG',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Aftermath Technologies',
-    description: 'Cutting-edge AI engineering by Brad Kinnard. Secure, autonomous, built to deploy.',
-    images: ['/twitter-image.png'],
-    creator: '@yourhandle', // Optional: replace with your Twitter handle
-  },
-};
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
+
+export const metadata: Metadata = siteMetadata;
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="bg-black text-white flex flex-col min-h-screen">
-        <Nav />
-        <main className="flex-1 pt-16">{children}</main>
-        <footer className="text-sm text-gray-500 text-center py-6 border-t border-gray-800">
-          &copy; {new Date().getFullYear()} Aftermath Technologies. Created by Brad Kinnard.
-        </footer>
+    <html lang="en" className="dark">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      </head>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <Layout>
+          {children}
+        </Layout>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
