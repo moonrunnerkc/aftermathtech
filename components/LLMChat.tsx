@@ -752,7 +752,7 @@ I'm ready to assist with technical questions, creative projects, data analysis, 
       
       setMessages([welcomeMessage]);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('System initialization failed:', error);
       setInitializationError(error.message);
       
@@ -857,7 +857,7 @@ The interface remains functional for demonstration purposes.`,
         }
       }));
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Message processing failed:', error);
       
       // Remove typing message and add error response
