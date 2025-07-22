@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #0a0a0a; /* True black background */
+  color: #e2e8f0;            /* Soft light gray text */
+  font-family: 'Geist', 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Links */
+a {
+  @apply text-neon-green hover:text-neon-cyan transition-colors;
+}
+
+/* Buttons */
+.button-glow {
+  @apply bg-neon-green text-black font-bold px-5 py-2 rounded shadow-md;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.button-glow:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.6);
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.button-glow {
+  @apply font-bold px-6 py-3 rounded shadow-lg transition;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+}
+/* Cards and Containers */
+.card {
+  @apply bg-gray-900 border border-gray-700 rounded-lg p-6;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
+}
+
+/* Utility */
+.glow {
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.5);
+}
+
+code {
+  @apply bg-gray-800 text-neon-green px-1 rounded;
+}
