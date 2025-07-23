@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from 'react';
 import { Monitor, Cpu, HardDrive } from 'lucide-react';
 import { ResourceStats } from '../hooks/useSwarmOrchestrator';
-import styles from '../styles/swarmModal.module.css';
 
 interface ResourceHUDProps {
   stats: ResourceStats;

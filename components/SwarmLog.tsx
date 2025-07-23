@@ -3,7 +3,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Agent, LogEntry } from '../hooks/useSwarmOrchestrator';
-import styles from '../styles/swarmModal.module.css';
 
 interface SwarmLogProps {
   log: LogEntry[];

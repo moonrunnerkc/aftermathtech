@@ -7,7 +7,6 @@ import { useSwarmOrchestrator } from '../hooks/useSwarmOrchestrator';
 import AgentAvatar from './AgentAvatar';
 import SwarmLog from './SwarmLog';
 import ResourceHUD from './ResourceHUD';
-import styles from '../styles/swarmModal.module.css';
 
 interface SwarmPreviewModalProps {
   goal: string;

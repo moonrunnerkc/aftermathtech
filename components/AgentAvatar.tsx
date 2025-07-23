@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { Agent } from '../hooks/useSwarmOrchestrator';
-import styles from '../styles/avatars.module.css';
 
 interface AgentAvatarProps {
   agent: Agent;
