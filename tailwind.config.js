@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { type Config } from 'tailwindcss'
+
+export default {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -21,11 +22,10 @@ module.exports = {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 5px theme(colors.cyber-blue)' },
-          '100%': { boxShadow: '0 0 20px theme(colors.cyber-blue), 0 0 30px theme(colors.cyber-blue)' }
+          '0%': { boxShadow: '0 0 5px #00f5ff' },
+          '100%': { boxShadow: '0 0 20px #00f5ff, 0 0 30px #00f5ff' }
         }
       }
     },
   },
-  plugins: [],
-}
+} satisfies Config
