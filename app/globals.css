@@ -1,5 +1,6 @@
-/* styles/globals.css - Enhanced Neon-Cyber Theme with Optimizations */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom CSS Variables for Neon Theme */
 :root {
@@ -21,16 +22,23 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0a0a0a;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%) !important;
+  color: white !important;
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Force background on all major containers */
+main, #__next, .min-h-screen, [data-nextjs-page] {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%) !important;
 }
 
 /* Enhanced Background Effects */
 .cyber-bg {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%) !important;
   position: relative;
 }
 
@@ -48,157 +56,80 @@ body {
   pointer-events: none;
 }
 
-/* OPTIMIZED Grid Pattern Background - Much Reduced Visibility */
-.grid-pattern {
-  background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.15; /* Significantly reduced from 0.4 */
-}
-
-/* OPTIMIZED Neon Text Effects - Reduced Glow for Mobile */
+/* OPTIMIZED Neon Text Effects */
 .neon-text {
-  text-shadow: var(--glow-cyan);
+  text-shadow: var(--glow-cyan) !important;
   animation: neon-flicker 2s ease-in-out infinite alternate;
+  color: #00ffff !important;
 }
 
 .neon-text-reduced {
-  text-shadow: 0 0 var(--title-glow) rgba(0, 255, 255, var(--glow-intensity));
+  text-shadow: 0 0 var(--title-glow) rgba(0, 255, 255, var(--glow-intensity)) !important;
   animation: neon-flicker-reduced 2s ease-in-out infinite alternate;
+  color: #00ffff !important;
 }
 
 .neon-text-purple {
-  text-shadow: var(--glow-purple);
+  text-shadow: var(--glow-purple) !important;
   animation: neon-flicker-purple 2.5s ease-in-out infinite alternate;
+  color: #8b5cf6 !important;
 }
 
 .neon-text-pink {
-  text-shadow: var(--glow-pink);
+  text-shadow: var(--glow-pink) !important;
   animation: neon-flicker-pink 3s ease-in-out infinite alternate;
+  color: #ec4899 !important;
 }
 
-/* Mobile-specific title optimizations */
-@media (max-width: 768px) {
-  :root {
-    --title-glow: 1px;
-    --glow-intensity: 0.3;
-  }
-  
-  .neon-text-reduced {
-    text-shadow: 0 0 1px rgba(0, 255, 255, 0.3);
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --title-glow: 1px;
-    --glow-intensity: 0.25;
-  }
+/* Force neon styling on headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #00ffff !important;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff !important;
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
 }
 
 /* Enhanced Button Styles */
 .cyber-button {
-  position: relative;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
-  border: 1px solid rgba(0, 255, 255, 0.5);
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2)) !important;
+  border: 1px solid rgba(0, 255, 255, 0.5) !important;
   box-shadow: 
     0 0 20px rgba(0, 255, 255, 0.3),
-    inset 0 0 20px rgba(0, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+    inset 0 0 20px rgba(0, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
+  color: #00ffff !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.25rem !important;
 }
 
 .cyber-button:hover {
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.6),
     0 0 60px rgba(0, 255, 255, 0.4),
-    inset 0 0 30px rgba(0, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.cyber-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.cyber-button:hover::before {
-  left: 100%;
+    inset 0 0 30px rgba(0, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* Card Hover Effects */
 .cyber-card {
-  background: rgba(15, 15, 35, 0.7);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
+  background: rgba(15, 15, 35, 0.7) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  transition: all 0.3s ease !important;
   position: relative;
   overflow: hidden;
 }
 
-.cyber-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.5), transparent);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.cyber-card:hover::before {
-  opacity: 1;
-}
-
 .cyber-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) !important;
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 255, 255, 0.3);
-}
-
-/* Enhanced CSS Particles Animation */
-.enhanced-particle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10;
+    0 0 30px rgba(0, 255, 255, 0.3) !important;
 }
 
 .neon-glow {
-  box-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 20px #10b981;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-    transform: translateY(95vh) translateX(0px) rotate(18deg) scale(1);
-  }
-  50% {
-    transform: translateY(50vh) translateX(50px) rotate(180deg) scale(1.2);
-    opacity: 1;
-  }
-  95% {
-    opacity: 1;
-    transform: translateY(5vh) translateX(-30px) rotate(320deg) scale(0.8);
-  }
-  100% {
-    transform: translateY(-10vh) translateX(0px) rotate(360deg) scale(0);
-    opacity: 0;
-  }
+  box-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 20px #10b981 !important;
 }
 
 /* Enhanced Animations */
@@ -264,72 +195,9 @@ body {
   }
 }
 
-@keyframes slide-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 /* Utility Classes */
-.animate-slide-in-up {
-  animation: slide-in-up 0.6s ease-out;
-}
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.6s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.6s ease-out;
-}
-
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Particles wrapper styling */
-.particles-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-  mix-blend-mode: screen;
-}
-
-/* Performance optimizations */
-.gpu-accelerated {
-  transform: translateZ(0);
-  will-change: transform, opacity;
 }
 
 /* Scrollbar Styling */
@@ -356,52 +224,7 @@ body {
   color: #ffffff;
 }
 
-::-moz-selection {
-  background: rgba(0, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-/* Focus States */
-.focus-cyber:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5);
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .particles-wrapper {
-    display: none;
-  }
-  
-  .neon-text,
-  .neon-text-reduced,
-  .neon-text-purple,
-  .neon-text-pink {
-    animation: none !important;
-  }
-}
-
-/* High contrast mode adjustments */
-@media (prefers-contrast: high) {
-  :root {
-    --glow-intensity: 0.8;
-    --title-glow: 3px;
-  }
-  
-  .grid-pattern {
-    opacity: 0.25;
-  }
-  
-  .cyber-bg::before {
-    background: 
-      radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-  }
+/* Override any conflicting background styles */
+.bg-gradient-to-br, .bg-gradient-to-b, .bg-gray-900 {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #0a0a0a 100%) !important;
 }
