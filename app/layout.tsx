@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
-import '@/styles/globals.css';
+import './globals.css';
 import Layout from '@/components/Layout';
 import { metadata as siteMetadata } from '@/lib/metadata';
 
