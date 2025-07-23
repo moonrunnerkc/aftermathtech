@@ -454,71 +454,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ==================== CALL TO ACTION SECTION ==================== */}
       
-      <section className="py-24 px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-12 border border-cyan-500/30 backdrop-blur-lg relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),transparent_70%)]"></div>
-            
-            <div className="relative z-10">
-              <div className="flex items-center justify-center mb-8">
-                <Rocket className="w-20 h-20 text-cyan-400 animate-pulse" />
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Join the AI Revolution
-              </h2>
-              
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                Be part of the movement toward truly autonomous, privacy-first artificial intelligence.
-                <br />
-                <span className="text-cyan-400">The future doesn't wait.</span>
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-                <a
-                  href="/projects"
-                  className="group bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-cyan-500/25"
-                >
-                  <span>Explore Our Tech</span>
-                  <Code className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                </a>
-                
-                <a
-                  href="mailto:bradkinnard@proton.me"
-                  className="group border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 backdrop-blur-sm"
-                >
-                  <span>Get in Touch</span>
-                  <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
-
-              {/* Newsletter CTA */}
-              <div className="max-w-md mx-auto">
-                <div className="bg-black/40 backdrop-blur-lg border border-purple-500/30 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-white mb-2">Stay Updated</h3>
-                  <p className="text-purple-300 text-sm mb-4">
-                    Get black-site intel on our latest AI drops.
-                  </p>
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="flex-1 bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400"
-                    />
-                    <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-4 py-2 rounded-lg font-medium transition-all">
-                      Join
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ==================== FOOTER CONTACT SECTION ==================== */}
       

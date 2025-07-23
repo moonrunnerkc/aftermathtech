@@ -220,16 +220,6 @@ const Header: React.FC = () => {
               >
                 <Github className="w-5 h-5" />
               </a>
-              
-              {/* Get Started CTA button */}
-              <Link
-                href="/contact"
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-4 xl:px-6 py-2 xl:py-2.5 rounded-lg font-medium transition-all hover:scale-105 min-h-[44px] flex items-center gap-2 shadow-lg shadow-cyan-500/20"
-              >
-                <Zap className="w-4 h-4" />
-                <span className="hidden xl:inline">Get Started</span>
-                <span className="xl:hidden">Start</span>
-              </Link>
             </div>
 
             {/* Mobile Menu Toggle Button */}
@@ -314,15 +304,6 @@ const Header: React.FC = () => {
                   <ExternalLink className="w-4 h-4 ml-auto" />
                 </a>
                 
-                {/* Get Started button in mobile menu */}
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-4 py-3 rounded-lg font-medium transition-all min-h-[50px] shadow-lg shadow-cyan-500/20"
-                >
-                  <Zap className="w-4 h-4" />
-                  Get Started
-                </Link>
               </div>
             </div>
           </div>

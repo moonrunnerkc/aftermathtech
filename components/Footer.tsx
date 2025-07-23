@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail, Brain } from 'lucide-react';
+import { Github, Linkedin, Mail, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -9,30 +9,25 @@ export default function Footer() {
 
   const footerLinks = {
     company: [
-      { href: '/about', label: 'About' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/contact', label: 'Contact' },
-      { href: '/careers', label: 'Careers' },
+      { href: '/about', label: 'About', external: false },
+      { href: '/contact', label: 'Contact', external: false },
     ],
     products: [
-      { href: '/projects', label: 'Projects' },
-      { href: '/resources', label: 'Resources' },
-      { href: '/api/docs', label: 'API Docs' },
-      { href: '/github', label: 'GitHub' },
+      { href: '/projects', label: 'AI Systems', external: false },
+      { href: 'https://github.com/moonrunnerkc', label: 'GitHub', external: true },
     ],
-    resources: [
-      { href: '/docs', label: 'Documentation' },
-      { href: '/tutorials', label: 'Tutorials' },
-      { href: '/community', label: 'Community' },
-      { href: '/support', label: 'Support' },
+    edgeTech: [
+      { href: '/blackbox-mind', label: 'Blackbox Mind', external: false },
+      { href: '/sentient-os', label: 'Sentient OS', external: false },
+      { href: '/belief-ecology', label: 'Belief Ecology', external: false },
+      { href: '/local-agents', label: 'Offline Chatbots', external: false },
     ],
   };
 
   const socialLinks = [
-    { href: 'https://github.com/aftermath-tech', icon: Github, label: 'GitHub' },
-    { href: 'https://twitter.com/aftermath_tech', icon: Twitter, label: 'Twitter' },
-    { href: 'https://linkedin.com/company/aftermath-tech', icon: Linkedin, label: 'LinkedIn' },
-    { href: 'mailto:hello@aftermathtech.com', icon: Mail, label: 'Email' },
+    { href: 'https://github.com/moonrunnerkc', icon: Github, label: 'GitHub' },
+    { href: 'https://www.linkedin.com/company/106763636/', icon: Linkedin, label: 'Company LinkedIn' },
+    { href: 'mailto:bradkinnard@proton.me', icon: Mail, label: 'Email' },
   ];
 
   return (
@@ -42,7 +37,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4 group">
+            <a href="/" className="flex items-center space-x-2 mb-4 group">
               <div className="relative">
                 <Brain className="w-8 h-8 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300" />
                 <div className="absolute inset-0 bg-cyan-400 blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
@@ -50,10 +45,9 @@ export default function Footer() {
               <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 AFTERMATH
               </span>
-            </Link>
+            </a>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-md">
-              Building the next generation of offline-first, autonomous AI systems. 
-              Empowering developers and researchers with tools that work anywhere, anytime.
+              Architecting offline-first, autonomous AI systems that don't phone home. You own it. You run it. You win.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -79,12 +73,13 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm cursor-pointer"
+                    {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -96,79 +91,49 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.products.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm cursor-pointer"
+                    {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Resources Links */}
+          {/* Edge Tech Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <h3 className="text-white font-semibold mb-4">Edge Tech</h3>
             <ul className="space-y-2">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.edgeTech.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm cursor-pointer"
+                    {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <div className="max-w-md">
-            <h3 className="text-white font-semibold mb-2">Stay Updated</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Get the latest updates on our research and product releases.
-            </p>
-            <div className="flex space-x-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-3 py-2 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 transition-colors duration-300"
-              />
-              <button className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
-                Subscribe
-              </button>
-            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Aftermath Technologies. All rights reserved.
+            © {currentYear} Aftermath Technologies Ltd. Built by humans. Powered by offline AI.
           </div>
           <div className="flex space-x-6">
-            <Link
-              href="/privacy"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
-            >
-              Terms of Service
-            </Link>
-            <Link
+            <a
               href="/cookies"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
             >
               Cookie Policy
-            </Link>
+            </a>
           </div>
         </div>
       </div>

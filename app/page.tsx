@@ -1,8 +1,22 @@
+/**
+ * Homepage Component - Mobile-Optimized with Fixed Layout Issues
+ * 
+ * Key Mobile Fixes:
+ * - Fixed "Live from GitHub" section layout for mobile
+ * - Improved modal positioning and sizing
+ * - Better responsive spacing and typography
+ * - Enhanced touch targets for mobile interaction
+ * - Proper container constraints to prevent overflow
+ * - Full-screen modal for LLMChat on mobile
+ * 
+ * File: app/page.tsx
+ */
+
 'use client';
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Shield, Zap, Terminal } from 'lucide-react';
+import { ArrowRight, Brain, Shield, Zap, Terminal, X } from 'lucide-react';
 import Link from 'next/link';
 import AgentVisualizer from '@/components/AgentVisualizer';
 import LLMChat from '@/components/LLMChat';
@@ -108,6 +122,28 @@ export default function HomePage() {
     setIsLoaded(true);
   }, []);
 
+  // Prevent body scroll when chat modal is open (mobile optimization)
+  useEffect(() => {
+    if (showChat) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.height = '100%';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+      document.body.style.height = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+      document.body.style.height = 'unset';
+    };
+  }, [showChat]);
+
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
@@ -137,20 +173,33 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen cyber-bg text-white overflow-x-hidden relative">
-      {/* Enhanced Three.js Particles replacing the old DOM-based system */}
-      <EnhancedFloatingParticles 
-        particleCount={200}
-        speed={1.0}
-        size={3.5}
-        colors={['#00ffff', '#ff00ff', '#ffff00', '#ff0080', '#8000ff', '#00ff80']}
-        className="particles-wrapper"
-      />
+      {/* Enhanced Three.js Particles - Reduced on mobile */}
+      <div className="hidden sm:block">
+        <EnhancedFloatingParticles 
+          particleCount={200}
+          speed={1.0}
+          size={3.5}
+          colors={['#00ffff', '#ff00ff', '#ffff00', '#ff0080', '#8000ff', '#00ff80']}
+          className="particles-wrapper"
+        />
+      </div>
+      
+      {/* Mobile-optimized particles */}
+      <div className="block sm:hidden">
+        <EnhancedFloatingParticles 
+          particleCount={50}
+          speed={0.7}
+          size={2}
+          colors={['#00ffff', '#ff00ff', '#8000ff']}
+          className="particles-wrapper opacity-30"
+        />
+      </div>
       
       {/* Reduced opacity grid pattern */}
       <div className="fixed inset-0 z-0 grid-pattern opacity-10"></div>
 
-      {/* 3D Background Visualizer - reduced opacity and better sizing */}
-      <div className="fixed inset-0 z-5 opacity-15">
+      {/* 3D Background Visualizer - Mobile optimized */}
+      <div className="fixed inset-0 z-5 opacity-15 hidden lg:block">
         <div className="w-full h-full max-h-screen overflow-hidden">
           <AgentVisualizer />
         </div>
@@ -158,110 +207,103 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="relative z-20">
-        {/* Hero Section - improved title spacing */}
-        <section className="min-h-screen flex items-center justify-center px-6 relative">
+        {/* Hero Section - Mobile optimized spacing */}
+        <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative">
           {/* Better mobile spacing container */}
-          <div className="max-w-6xl mx-auto text-center" style={{ paddingTop: 'clamp(4rem, 15vh, 8rem)' }}>
+          <div className="max-w-6xl mx-auto text-center w-full" style={{ paddingTop: 'clamp(4rem, 15vh, 8rem)' }}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-8"
             >
-              {/* Optimized title with reduced glow on mobile */}
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-slide-in-up neon-text-reduced">
+              {/* Mobile-optimized title */}
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-slide-in-up neon-text-reduced leading-tight">
                 AFTERMATH TECHNOLOGIES
               </h1>
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-light mb-8 text-gray-300 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light mb-6 sm:mb-8 text-gray-300 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
                 Autonomous AI Systems
               </h2>
-              <p className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
-                Building the next generation of offline-first, autonomous AI that runs everywhere. 
-                <span className="text-cyan-400"> More capable than OpenAI.</span>
-                <span className="text-purple-400"> More accessible than Hugging Face.</span>
-                <span className="text-pink-400"> More practical than anyone else.</span>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed animate-slide-in-up px-4" style={{ animationDelay: '0.4s' }}>
+                Building the next generation of offline-first, autonomous AI that runs everywhere.<br></br> 
+                <span className="text-cyan-400">Complete Privacy / Your data stays with you.</span>
               </p>
             </motion.div>
 
+            {/* Mobile-optimized CTA buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 px-4"
             >
-              <button
-                onClick={() => setShowChat(true)}
-                className="group px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 text-white relative overflow-hidden bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 shadow-lg hover:shadow-cyan-500/25"
-              >
-                <span className="relative z-10">Try Local AI Chat</span>
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-              </button>
               <Link
                 href="/projects"
-                className="group px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 text-white border-2 border-purple-500/50 hover:border-purple-400 hover:bg-purple-400/10 backdrop-blur-sm"
+                className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-3 text-white border-2 border-purple-500/50 hover:border-purple-400 hover:bg-purple-400/10 backdrop-blur-sm min-h-[50px]"
               >
                 <span>View Projects</span>
-                <Terminal className="w-6 h-6 group-hover:rotate-6 transition-transform duration-300" />
+                <Terminal className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-6 transition-transform duration-300" />
               </Link>
             </motion.div>
 
-            {/* Hero Stats */}
+            {/* Hero Stats - Mobile responsive grid */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto px-4"
             >
-              <div className="cyber-card p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-cyan-400 mb-2">100%</div>
-                <div className="text-gray-400">Offline Capable</div>
+              <div className="cyber-card p-4 sm:p-6 rounded-xl text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-2">100%</div>
+                <div className="text-sm sm:text-base text-gray-400">Offline Capable</div>
               </div>
-              <div className="cyber-card p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-purple-400 mb-2">0ms</div>
-                <div className="text-gray-400">Network Latency</div>
+              <div className="cyber-card p-4 sm:p-6 rounded-xl text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-400 mb-2">0ms</div>
+                <div className="text-sm sm:text-base text-gray-400">Network Latency</div>
               </div>
-              <div className="cyber-card p-6 rounded-xl text-center">
-                <div className="text-3xl font-bold text-pink-400 mb-2">∞</div>
-                <div className="text-gray-400">Privacy Guaranteed</div>
+              <div className="cyber-card p-4 sm:p-6 rounded-xl text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-pink-400 mb-2">∞</div>
+                <div className="text-sm sm:text-base text-gray-400">Privacy Guaranteed</div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-32 px-6 relative">
+        {/* Features Section - Mobile optimized */}
+        <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-transparent"></div>
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.h3
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold text-center mb-20 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-20 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent px-4"
             >
               Why Aftermath?
             </motion.h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Mobile-responsive features grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className="cyber-card group p-8 rounded-xl transition-all duration-500 hover:transform hover:scale-105 animate-pulse-glow"
+                  className="cyber-card group p-6 sm:p-8 rounded-xl transition-all duration-500 hover:transform hover:scale-105 animate-pulse-glow"
                   style={{ animationDelay: `${index * 0.5}s` }}
                 >
-                  <div className={`mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                  <div className={`mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 ${
                     feature.color === 'cyan' ? 'text-cyan-400' :
                     feature.color === 'purple' ? 'text-purple-400' :
                     feature.color === 'pink' ? 'text-pink-400' : 'text-cyan-400'
                   }`}>
                     {feature.icon}
                   </div>
-                  <h4 className="text-2xl font-bold mb-4 text-white group-hover:text-cyan-400 transition-colors">
+                  <h4 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-cyan-400 transition-colors">
                     {feature.title}
                   </h4>
-                  <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                  <p className="text-sm sm:text-base text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
                     {feature.description}
                   </p>
                   
@@ -273,52 +315,61 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Live Projects Feed */}
-        <section className="py-32 px-6 relative">
+        {/* Live Projects Feed - FIXED MOBILE LAYOUT */}
+        <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-cyan-900/10"></div>
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.h3
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-20 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent neon-text-purple"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-12 sm:mb-20 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent neon-text-purple px-4"
             >
               Live from GitHub
             </motion.h3>
-            <div className="cyber-card p-8 rounded-2xl">
-              <ProjectFeed />
+            
+            {/* FIXED: Mobile-optimized container with proper constraints */}
+            <div className="w-full max-w-full">
+              <div className="cyber-card p-4 sm:p-6 lg:p-8 rounded-2xl mx-auto overflow-hidden">
+                {/* Mobile-aware ProjectFeed container */}
+                <div className="w-full overflow-x-auto">
+                  <ProjectFeed />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-32 px-6 relative">
+        {/* Call to Action - Mobile optimized */}
+        <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-cyan-900/20"></div>
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="cyber-card p-12 rounded-2xl"
+              className="cyber-card p-8 sm:p-12 rounded-2xl"
             >
-              <h3 className="text-5xl md:text-6xl font-bold mb-8 text-white neon-text">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white neon-text">
                 Ready to build the future?
               </h3>
-              <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8 sm:mb-12 leading-relaxed px-4">
                 Join us in creating AI systems that work <span className="text-cyan-400">anywhere</span>, 
                 <span className="text-purple-400"> anytime</span>, 
                 <span className="text-pink-400"> without compromise</span>.
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              
+              {/* Mobile-responsive CTA buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                 <Link
                   href="/contact"
-                  className="px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 shadow-lg hover:shadow-purple-500/25"
+                  className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 shadow-lg hover:shadow-purple-500/25 min-h-[50px] flex items-center justify-center"
                 >
                   Get in Touch
                 </Link>
                 <Link
                   href="/about"
-                  className="px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 text-white border-2 border-purple-400/50 hover:border-purple-400 hover:bg-purple-400/10"
+                  className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-white border-2 border-purple-400/50 hover:border-purple-400 hover:bg-purple-400/10 min-h-[50px] flex items-center justify-center"
                 >
                   Our Story
                 </Link>
@@ -328,43 +379,48 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* LLM Chat Modal */}
+      {/* FIXED: Mobile-optimized LLM Chat Modal */}
       {showChat && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex items-center justify-center p-4"
-          onClick={() => setShowChat(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="cyber-card bg-gray-900/90 rounded-2xl border-2 border-cyan-400/50 w-full max-w-4xl h-[80vh] overflow-hidden backdrop-filter backdrop-blur-20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-6 border-b border-cyan-400/30 flex justify-between items-center bg-gradient-to-r from-cyan-900/20 to-purple-900/20">
-              <h3 className="text-2xl font-bold text-white neon-text">Local AI Assistant</h3>
-              <button
-                onClick={() => setShowChat(false)}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-2xl font-bold hover:scale-110 transform duration-200"
-              >
-                ✕
-              </button>
+        <>
+          {/* Full-screen backdrop for mobile */}
+          <div className="fixed inset-0 z-[9998] bg-black/90 backdrop-blur-lg" />
+          
+          {/* Modal container - Full screen on mobile, centered on desktop */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            
+            {/* Chat modal - Mobile responsive */}
+            <div className="w-full h-full sm:w-full sm:max-w-6xl sm:h-[90vh] bg-gray-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-cyan-400/50 rounded-none sm:rounded-2xl shadow-2xl shadow-cyan-500/20 flex flex-col overflow-hidden">
+              
+              {/* Modal header - Mobile optimized */}
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-cyan-400/30 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 flex-shrink-0">
+                <h3 className="text-xl sm:text-2xl font-bold text-white neon-text">Local AI Assistant</h3>
+                <button
+                  onClick={() => setShowChat(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800/50 hover:bg-gray-700/50 rounded-full flex items-center justify-center transition-colors"
+                  aria-label="Close chat"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-300" />
+                </button>
+              </div>
+              
+              {/* Chat content - Full height with proper overflow */}
+              <div className="flex-1 min-h-0 overflow-hidden">
+                <LLMChat />
+              </div>
             </div>
-            <LLMChat />
-          </motion.div>
-        </motion.div>
+          </div>
+        </>
       )}
 
-      {/* Ambient lighting effects */}
+      {/* Ambient lighting effects - Reduced on mobile */}
       <div className="fixed inset-0 pointer-events-none z-1">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-48 sm:w-96 h-48 sm:h-96 bg-pink-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Performance indicator */}
-      <div className="fixed bottom-4 right-4 z-50 opacity-30 text-xs text-cyan-400">
+      {/* Performance indicator - Hidden on mobile */}
+      <div className="hidden lg:block fixed bottom-4 right-4 z-50 opacity-30 text-xs text-cyan-400">
         <div className="bg-black/50 px-2 py-1 rounded backdrop-blur">
           Enhanced Particles Active
         </div>
