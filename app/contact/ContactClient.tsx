@@ -30,7 +30,7 @@ interface InquiryType {
 }
 
 interface ContactClientProps {
-  contactInfo: unknown
+  contactInfo: any
 }
 
 // ==================== MAIN CONTACT CLIENT COMPONENT ====================

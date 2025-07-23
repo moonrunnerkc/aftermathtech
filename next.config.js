@@ -10,19 +10,38 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
+  // Performance optimizations
   experimental: {
-    appDir: true,
+    optimizePackageImports: ['lucide-react'],
   },
   
-  webpack: (config, { dev, isServer }) => {
-    return config;
-  },
-  
-  swcMinify: true,
-  
+  // Image optimization
   images: {
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
+  },
+  
+  // Headers for security and performance
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
   },
 };
 

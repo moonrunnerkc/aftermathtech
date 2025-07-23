@@ -7,6 +7,7 @@ import { useSwarmOrchestrator } from '../hooks/useSwarmOrchestrator';
 import AgentAvatar from './AgentAvatar';
 import SwarmLog from './SwarmLog';
 import ResourceHUD from './ResourceHUD';
+import styles from '../styles/swarmModal.module.css';
 
 interface SwarmPreviewModalProps {
   goal: string;
@@ -73,7 +74,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
 
   return (
     <div 
-      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className={styles.backdrop}
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -81,28 +82,28 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
     >
       <div 
         ref={modalRef}
-        className="bg-gray-900 border border-green-400/30 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden neon-glow"
+        className={styles.card}
         tabIndex={-1}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-green-400/20">
-          <div className="flex items-center gap-4">
-            <h2 id="swarm-modal-title" className="text-xl font-mono text-green-400">
+        <div className={styles.header}>
+          <div className={styles.titleSection}>
+            <h2 id="swarm-modal-title" className={styles.title}>
               🧠 Swarm Snapshot
             </h2>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className={styles.subtitle}>
               {currentRound > 0 && (
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse">
+                <span className={styles.roundIndicator}>
                   Round {currentRound}/3
                 </span>
               )}
-              <span className="font-mono">
+              <span className={styles.goalText}>
                 Goal: {goal || 'AI Agent Collaboration Demo'}
               </span>
             </div>
           </div>
           
-          <div className="flex gap-3">
+          <div className={styles.controls}>
             {/* Kill Net Toggle */}
             <button
               className={`${styles.killNetButton} ${!isRunning ? styles.active : ''}`}
@@ -125,7 +126,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
             
             {/* Close Button */}
             <button
-              className="text-gray-400 hover:text-red-400 transition-colors text-2xl font-mono"
+              className={styles.closeButton}
               onClick={onClose}
               aria-label="Close swarm preview"
             >
@@ -135,7 +136,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
         </div>
 
         {/* Agent Avatars Row */}
-        <div className="flex justify-center gap-6 p-6 border-b border-green-400/10">
+        <div className={styles.agentsRow}>
           {agents.map((agent) => (
             <AgentAvatar
               key={agent.id}
@@ -147,23 +148,23 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
         </div>
 
         {/* Status Bar */}
-        <div className="flex items-center justify-between p-4 bg-gray-800/50">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-green-400 font-mono text-sm">
+        <div className={styles.statusBar}>
+          <div className={styles.statusIndicator}>
+            <div className={`${styles.statusDot} ${isRunning ? styles.running : styles.idle}`} />
+            <span className={styles.statusText}>
               {isRunning ? 'Agents Active' : 'Standby Mode'}
             </span>
           </div>
           
-          <div className="text-gray-400 font-mono text-sm">
+          <div className={styles.logStats}>
             {log.length} entries • {agents.length} agents
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
+        <div className={styles.contentArea}>
           {/* Swarm Log */}
-          <div className="space-y-4">
+          <div className={styles.logSection}>
             <SwarmLog 
               log={log} 
               agents={agents}

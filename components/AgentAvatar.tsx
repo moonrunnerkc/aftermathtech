@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { Agent } from '../hooks/useSwarmOrchestrator';
+import styles from '../styles/avatars.module.css';
 
 interface AgentAvatarProps {
   agent: Agent;
@@ -12,7 +13,7 @@ interface AgentAvatarProps {
 
 const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, isActive, isRunning }) => {
   const getAvatarClasses = () => {
-    // CSS modules removed
+    const baseClass = styles.avatar;
     const roleClass = styles[agent.id]; // planner, researcher, coder, critic
     const activeClass = isActive ? styles.active : '';
     const runningClass = isRunning ? styles.running : '';
@@ -21,7 +22,7 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, isActive, isRunning })
   };
 
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className={styles.avatarContainer}>
       {/* Avatar Circle */}
       <div 
         className={getAvatarClasses()}
@@ -32,22 +33,22 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, isActive, isRunning })
         title={`${agent.role} - ${isActive ? 'Active' : 'Standby'}`}
       >
         {/* Agent Emoji */}
-        <span className="text-2xl" role="img" aria-label={agent.role}>
+        <span className={styles.emoji} role="img" aria-label={agent.role}>
           {agent.emoji}
         </span>
         
         {/* Activity Pulse Ring */}
         {isActive && (
           <div 
-            className="absolute inset-0 rounded-full border-2 border-green-400 animate-ping"
+            className={styles.pulseRing}
             style={{ borderColor: agent.color } as React.CSSProperties}
           />
         )}
         
         {/* Processing Indicator */}
         {isActive && (
-          <div className="absolute -top-1 -right-1 w-3 h-3">
-            <div className="flex space-x-1">
+          <div className={styles.processingIndicator}>
+            <div className={styles.processingDots}>
               <span style={{ backgroundColor: agent.color }}></span>
               <span style={{ backgroundColor: agent.color }}></span>
               <span style={{ backgroundColor: agent.color }}></span>
@@ -57,15 +58,15 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, isActive, isRunning })
       </div>
       
       {/* Agent Label */}
-      <div className="text-center">
-        <div className="text-xs text-green-400 font-mono">{agent.role}</div>
-        <div className="text-xs text-gray-500 font-mono">#{agent.id}</div>
+      <div className={styles.label}>
+        <div className={styles.roleName}>{agent.role}</div>
+        <div className={styles.agentId}>#{agent.id}</div>
       </div>
       
       {/* Connection Lines */}
       {isRunning && (
-        <div className="absolute top-0 left-full w-8 h-full">
-          <svg className="w-full h-full" viewBox="0 0 100 20">
+        <div className={styles.connectionLines}>
+          <svg className={styles.connectionSvg} viewBox="0 0 100 20">
             <line
               x1="50"
               y1="0"
@@ -73,7 +74,7 @@ const AgentAvatar: React.FC<AgentAvatarProps> = ({ agent, isActive, isRunning })
               y2="20"
               stroke={agent.color}
               strokeWidth="1"
-              className="stroke-green-400 stroke-2"
+              className={styles.connectionLine}
             />
           </svg>
         </div>
