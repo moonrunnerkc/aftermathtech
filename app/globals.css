@@ -1,18 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Custom CSS Variables for Neon Theme */
 :root {
-  --neon-cyan: #00ffff;
-  --neon-purple: #8b5cf6;
-  --neon-pink: #ec4899;
-  --neon-green: #10b981;
-  --glow-cyan: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-  --glow-purple: 0 0 20px #8b5cf6, 0 0 40px #8b5cf6, 0 0 60px #8b5cf6;
-  --glow-pink: 0 0 20px #ec4899, 0 0 40px #ec4899, 0 0 60px #ec4899;
-  --glow-intensity: 0.5;
-  --title-glow: 2px;
+  --background: 220 13% 9%;
+  --foreground: 220 90% 95%;
+  --primary: 142 86% 28%;
+  --ring: 142 86% 28%;
 }
 
 html {
@@ -25,60 +17,22 @@ body {
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
   min-height: 100vh;
   color: white;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Neon Effects */
-.neon-text {
-  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
-}
-
-.neon-border {
-  border: 1px solid var(--neon-cyan);
-  box-shadow: 0 0 10px var(--neon-cyan);
+.neon-glow {
+  box-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 15px #10b981;
 }
 
 .cyber-gradient {
-  background: linear-gradient(45deg, #00f5ff, #8b5cf6, #00ff88);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
 }
 
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
-
-@keyframes glow {
-  0% { box-shadow: 0 0 5px var(--neon-cyan); }
-  100% { box-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* Enhanced button styles */
-.btn-cyber {
-  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-.btn-cyber:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-}
-/* Force deployment - Tue Jul 22 06:20:41 PM MDT 2025 */

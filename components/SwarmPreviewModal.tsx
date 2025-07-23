@@ -73,7 +73,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
 
   return (
     <div 
-      className={styles.backdrop}
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -81,28 +81,28 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
     >
       <div 
         ref={modalRef}
-        className={styles.card}
+        className="bg-gray-900 border border-green-400/30 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden neon-glow"
         tabIndex={-1}
       >
         {/* Header */}
-        <div className={styles.header}>
-          <div className={styles.titleSection}>
-            <h2 id="swarm-modal-title" className={styles.title}>
+        <div className="flex items-center justify-between p-6 border-b border-green-400/20">
+          <div className="flex items-center gap-4">
+            <h2 id="swarm-modal-title" className="text-xl font-mono text-green-400">
               🧠 Swarm Snapshot
             </h2>
-            <div className={styles.subtitle}>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
               {currentRound > 0 && (
-                <span className={styles.roundIndicator}>
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse">
                   Round {currentRound}/3
                 </span>
               )}
-              <span className={styles.goalText}>
+              <span className="font-mono">
                 Goal: {goal || 'AI Agent Collaboration Demo'}
               </span>
             </div>
           </div>
           
-          <div className={styles.controls}>
+          <div className="flex gap-3">
             {/* Kill Net Toggle */}
             <button
               className={`${styles.killNetButton} ${!isRunning ? styles.active : ''}`}
@@ -125,7 +125,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
             
             {/* Close Button */}
             <button
-              className={styles.closeButton}
+              className="text-gray-400 hover:text-red-400 transition-colors text-2xl font-mono"
               onClick={onClose}
               aria-label="Close swarm preview"
             >
@@ -135,7 +135,7 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
         </div>
 
         {/* Agent Avatars Row */}
-        <div className={styles.agentsRow}>
+        <div className="flex justify-center gap-6 p-6 border-b border-green-400/10">
           {agents.map((agent) => (
             <AgentAvatar
               key={agent.id}
@@ -147,23 +147,23 @@ const SwarmPreviewModal: React.FC<SwarmPreviewModalProps> = ({ goal, onClose }) 
         </div>
 
         {/* Status Bar */}
-        <div className={styles.statusBar}>
-          <div className={styles.statusIndicator}>
-            <div className={`${styles.statusDot} ${isRunning ? styles.running : styles.idle}`} />
-            <span className={styles.statusText}>
+        <div className="flex items-center justify-between p-4 bg-gray-800/50">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="text-green-400 font-mono text-sm">
               {isRunning ? 'Agents Active' : 'Standby Mode'}
             </span>
           </div>
           
-          <div className={styles.logStats}>
+          <div className="text-gray-400 font-mono text-sm">
             {log.length} entries • {agents.length} agents
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className={styles.contentArea}>
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
           {/* Swarm Log */}
-          <div className={styles.logSection}>
+          <div className="space-y-4">
             <SwarmLog 
               log={log} 
               agents={agents}
