@@ -1,5 +1,5 @@
 // components/LLMChat.tsx - PRODUCTION AFTERMATH TECHNOLOGIES LOCAL AI CHAT SYSTEM + SWARM INTEGRATION
-// ==================== AUTONOMOUS LOCAL AI INTERFACE - PRODUCTION VERSION ====================
+// ==================== AUTONOMOUS LOCAL AI INTERFACE - PRODUCTION VERSION (MOBILE OPTIMIZED) ====================
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
@@ -391,7 +391,7 @@ const LLMChat: React.FC = () => {
       console.warn('Performance monitoring failed:', error);
     }
   }, [sessionStartTime, lastResponseTime]);
-  
+
   // Start performance monitoring on component mount
   useEffect(() => {
     const capabilities = detectSystemCapabilities();
@@ -512,8 +512,6 @@ const LLMChat: React.FC = () => {
       let bestMatch = null;
       let highestScore = 0;
       
-      console.log('Checking patterns for input:', normalizedInput);
-      
       for (const responseData of INTELLIGENT_RESPONSES) {
         let score = 0;
         const matchedTriggers = [];
@@ -538,17 +536,11 @@ const LLMChat: React.FC = () => {
           }
         }
         
-        if (score > 0) {
-          console.log(`Pattern match: triggers [${matchedTriggers.join(', ')}] scored ${score}`);
-        }
-        
         if (score > highestScore) {
           highestScore = score;
           bestMatch = responseData;
         }
       }
-      
-      console.log('Best match score:', highestScore, 'Match found:', !!bestMatch);
       
       let response: string;
       
@@ -566,9 +558,6 @@ const LLMChat: React.FC = () => {
         
       } else {
         // More engaging fallback responses with variety and debugging
-        console.log('No pattern match found for:', normalizedInput);
-        console.log('Triggers checked:', INTELLIGENT_RESPONSES.map(r => r.triggers));
-        
         const fallbackResponses = [
           `Interesting question: "${userMessage}"\n\n**Here's what I excel at demonstrating:**\n\n🔢 **Math & Calculations:** Try "what's 847 x 293" for instant results\n🛠️ **Technical Help:** Ask about programming, AI, web development\n🎨 **Creative Projects:** Brainstorming, writing assistance, problem-solving\n🔒 **Privacy-First AI:** 100% local processing, zero data transmission\n🧠 **Swarm Intelligence:** Click "Swarm Preview" to see 4 AI agents collaborate\n\n**Quick Demo Ideas:**\n• "Explain quantum computing simply"\n• "Help me plan a web app"\n• "What's 156 x 789?"\n• "How does offline AI work?"\n\nWhat interests you most?`,
           
@@ -931,55 +920,55 @@ The interface remains functional for demonstration purposes.`,
    */
   const renderInitializationScreen = () => (
     <div className="flex flex-col h-full bg-gray-900 text-white">
-      {/* Header */}
-      <div className="border-b border-gray-700 p-6 bg-gray-800">
+      {/* Header - Mobile Responsive */}
+      <div className="border-b border-gray-700 p-4 sm:p-6 bg-gray-800">
         <div className="text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Brain className="w-8 h-8 text-cyan-400" />
-            <h1 className="text-2xl font-bold">Aftermath Technologies</h1>
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" />
+            <h1 className="text-xl sm:text-2xl font-bold">Aftermath Technologies</h1>
           </div>
-          <p className="text-gray-400">Autonomous AI System + Swarm Intelligence</p>
+          <p className="text-sm sm:text-base text-gray-400">Autonomous AI System + Swarm Intelligence</p>
         </div>
       </div>
       
-      {/* Model Information Card */}
-      <div className="flex-1 p-6 overflow-y-auto">
-        <div className="max-w-4xl mx-auto space-y-8">
+      {/* Model Information Card - Mobile Optimized */}
+      <div className="flex-1 p-4 sm:p-6 overflow-y-auto">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           
           {/* Model Configuration Display */}
-          <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <h2 className="text-xl font-bold text-white mb-2">{PRODUCTION_MODEL_CONFIG.name}</h2>
-                <p className="text-gray-400">{PRODUCTION_MODEL_CONFIG.description}</p>
-                <div className="flex items-center gap-4 mt-3 text-sm">
+          <div className="bg-gray-800 border border-gray-700 rounded-xl p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
+              <div className="mb-4 sm:mb-0">
+                <h2 className="text-lg sm:text-xl font-bold text-white mb-2">{PRODUCTION_MODEL_CONFIG.name}</h2>
+                <p className="text-sm sm:text-base text-gray-400">{PRODUCTION_MODEL_CONFIG.description}</p>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 text-xs sm:text-sm">
                   <span className="flex items-center gap-1 text-cyan-400">
-                    <Database className="w-4 h-4" />
+                    <Database className="w-3 h-3 sm:w-4 sm:h-4" />
                     {PRODUCTION_MODEL_CONFIG.size}
                   </span>
                   <span className="flex items-center gap-1 text-green-400">
-                    <Shield className="w-4 h-4" />
+                    <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
                     {PRODUCTION_MODEL_CONFIG.privacy.offline ? 'Offline-First' : 'Cloud-Based'}
                   </span>
                   <span className="flex items-center gap-1 text-purple-400">
-                    <Zap className="w-4 h-4" />
+                    <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
                     {PRODUCTION_MODEL_CONFIG.performance.avgResponseTime}
                   </span>
                   <span className="flex items-center gap-1 text-orange-400">
-                    <Brain className="w-4 h-4" />
+                    <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
                     Swarm Ready
                   </span>
                 </div>
               </div>
               
-              <div className="text-right">
-                <div className="text-2xl font-bold text-cyan-400">v{PRODUCTION_MODEL_CONFIG.version}</div>
-                <div className="text-sm text-gray-500">Production Ready</div>
+              <div className="text-center sm:text-right">
+                <div className="text-xl sm:text-2xl font-bold text-cyan-400">v{PRODUCTION_MODEL_CONFIG.version}</div>
+                <div className="text-xs sm:text-sm text-gray-500">Production Ready</div>
               </div>
             </div>
             
-            {/* Capabilities Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            {/* Capabilities Grid - Mobile Responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
               {PRODUCTION_MODEL_CONFIG.capabilities.map((capability, index) => (
                 <div key={index} className="bg-gray-900/50 rounded-lg p-3 text-center">
                   <div className="text-xs text-gray-400 leading-tight">{capability}</div>
@@ -987,11 +976,11 @@ The interface remains functional for demonstration purposes.`,
               ))}
             </div>
             
-            {/* System Requirements */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            {/* System Requirements - Mobile Responsive */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-xs sm:text-sm">
               <div>
                 <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <HardDrive className="w-4 h-4" />
+                  <HardDrive className="w-3 h-3 sm:w-4 sm:h-4" />
                   Requirements
                 </h4>
                 <ul className="text-gray-400 space-y-1">
@@ -1003,7 +992,7 @@ The interface remains functional for demonstration purposes.`,
               
               <div>
                 <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <Cpu className="w-4 h-4" />
+                  <Cpu className="w-3 h-3 sm:w-4 sm:h-4" />
                   Performance
                 </h4>
                 <ul className="text-gray-400 space-y-1">
@@ -1015,7 +1004,7 @@ The interface remains functional for demonstration purposes.`,
               
               <div>
                 <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
                   Privacy
                 </h4>
                 <ul className="text-gray-400 space-y-1">
@@ -1027,27 +1016,27 @@ The interface remains functional for demonstration purposes.`,
             </div>
           </div>
           
-          {/* Initialize Button */}
+          {/* Initialize Button - Mobile Optimized */}
           <div className="text-center">
             <button
               onClick={initializeProductionSystem}
               disabled={isInitializing}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold rounded-xl hover:from-cyan-400 hover:to-purple-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center gap-3 mx-auto shadow-lg hover:shadow-cyan-500/25"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold rounded-xl hover:from-cyan-400 hover:to-purple-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-lg hover:shadow-cyan-500/25 min-h-[50px]"
             >
               {isInitializing ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                   Initializing System...
                 </>
               ) : (
                 <>
-                  <Download className="w-5 h-5" />
+                  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                   Initialize Aftermath AI + Swarm
                 </>
               )}
             </button>
             
-            <p className="mt-4 text-sm text-gray-500 max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 max-w-2xl mx-auto px-4">
               First initialization downloads and optimizes the AI model + multi-agent swarm system for your device. 
               Subsequent launches will be instantaneous.
             </p>
@@ -1062,39 +1051,39 @@ The interface remains functional for demonstration purposes.`,
    */
   const renderLoadingScreen = () => (
     <div className="flex flex-col h-full bg-gray-900 text-white">
-      <div className="flex-1 flex items-center justify-center p-6">
-        <div className="text-center max-w-lg">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-6">
+        <div className="text-center max-w-lg w-full">
           
-          {/* Loading Animation */}
-          <div className="relative mb-8">
-            <div className="w-20 h-20 mx-auto relative">
+          {/* Loading Animation - Mobile Responsive */}
+          <div className="relative mb-6 sm:mb-8">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto relative">
               <div className="absolute inset-0 rounded-full border-4 border-cyan-500/20"></div>
               <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-cyan-500 animate-spin"></div>
-              <Brain className="w-10 h-10 text-cyan-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+              <Brain className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
             </div>
           </div>
           
-          <h2 className="text-2xl font-bold mb-4">Initializing Aftermath AI + Swarm</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Initializing Aftermath AI + Swarm</h2>
           
-          {/* Progress Information */}
+          {/* Progress Information - Mobile Optimized */}
           {modelProgress && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="text-gray-300">
-                <p className="text-lg mb-2">{modelProgress.message}</p>
+                <p className="text-base sm:text-lg mb-2">{modelProgress.message}</p>
                 {modelProgress.file && (
-                  <p className="text-sm text-gray-500 font-mono">{modelProgress.file}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 font-mono break-all">{modelProgress.file}</p>
                 )}
               </div>
               
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden shadow-inner">
+              {/* Progress Bar - Mobile Responsive */}
+              <div className="w-full bg-gray-700 rounded-full h-3 sm:h-4 overflow-hidden shadow-inner">
                 <div 
-                  className="bg-gradient-to-r from-cyan-500 to-purple-500 h-4 rounded-full transition-all duration-500 ease-out shadow-sm"
+                  className="bg-gradient-to-r from-cyan-500 to-purple-500 h-3 sm:h-4 rounded-full transition-all duration-500 ease-out shadow-sm"
                   style={{ width: `${Math.max(modelProgress.progress * 100, 2)}%` }}
                 />
               </div>
               
-              <div className="flex justify-between text-sm text-gray-400">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-400">
                 <span>{(modelProgress.progress * 100).toFixed(1)}% Complete</span>
                 <span>{modelProgress.loaded}/{modelProgress.total}</span>
               </div>
@@ -1108,8 +1097,8 @@ The interface remains functional for demonstration purposes.`,
             </div>
           )}
           
-          {/* Stage Indicators */}
-          <div className="mt-8 grid grid-cols-4 gap-4">
+          {/* Stage Indicators - Mobile Responsive */}
+          <div className="mt-6 sm:mt-8 grid grid-cols-4 gap-2 sm:gap-4">
             {[
               { stage: 'initializing', icon: Settings, label: 'Setup' },
               { stage: 'loading', icon: Download, label: 'Loading' },
@@ -1117,7 +1106,7 @@ The interface remains functional for demonstration purposes.`,
               { stage: 'error', icon: AlertCircle, label: 'Error' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <item.icon className={`w-6 h-6 mx-auto mb-2 ${
+                <item.icon className={`w-4 h-4 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2 ${
                   modelProgress?.stage === item.stage ? 'text-cyan-400' : 'text-gray-600'
                 }`} />
                 <p className={`text-xs ${
@@ -1130,66 +1119,66 @@ The interface remains functional for demonstration purposes.`,
       </div>
     </div>
   );
-  
+
   /**
-   * Render main chat interface
+   * Render main chat interface - MOBILE OPTIMIZED
    */
   const renderChatInterface = () => (
     <div className="flex flex-col h-full bg-gray-900 text-white">
       
-      {/* Enhanced Header with System Status + Swarm Preview */}
-      <div className="border-b border-gray-700 p-4 bg-gray-800">
+      {/* Enhanced Header with System Status + Swarm Preview - MOBILE RESPONSIVE */}
+      <div className="border-b border-gray-700 p-3 sm:p-4 bg-gray-800 flex-shrink-0">
         <div className="flex items-center justify-between">
           
-          {/* Left: AI Info */}
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Brain className="w-7 h-7 text-cyan-400" />
+          {/* Left: AI Info - Mobile Optimized */}
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <div className="relative flex-shrink-0">
+              <Brain className="w-5 h-5 sm:w-7 sm:h-7 text-cyan-400" />
               {systemStatus.modelReady && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
+                <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
               )}
             </div>
-            <div>
-              <h3 className="font-bold text-white">Aftermath AI Assistant</h3>
-              <div className="flex items-center gap-3 text-xs">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-bold text-white text-sm sm:text-base truncate">Aftermath AI Assistant</h3>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
                 <span className={`flex items-center gap-1 ${systemStatus.modelReady ? 'text-green-400' : 'text-red-400'}`}>
-                  <div className={`w-1.5 h-1.5 rounded-full ${systemStatus.modelReady ? 'bg-green-400' : 'bg-red-400'} animate-pulse`}></div>
+                  <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${systemStatus.modelReady ? 'bg-green-400' : 'bg-red-400'} animate-pulse`}></div>
                   {systemStatus.modelReady ? 'Online' : 'Offline'}
                 </span>
-                <span className="text-gray-400">v{PRODUCTION_MODEL_CONFIG.version}</span>
+                <span className="text-gray-400 hidden sm:inline">v{PRODUCTION_MODEL_CONFIG.version}</span>
                 {systemStatus.capabilities.offlineReady && (
-                  <span className="flex items-center gap-1 text-blue-400">
+                  <span className="flex items-center gap-1 text-blue-400 hidden md:flex">
                     <WifiOff className="w-3 h-3" />
                     Offline Ready
                   </span>
                 )}
                 <span className="flex items-center gap-1 text-purple-400">
                   <Zap className="w-3 h-3" />
-                  Swarm Ready
+                  <span className="hidden sm:inline">Swarm</span>
                 </span>
               </div>
             </div>
           </div>
           
-          {/* Center: Swarm Preview Button */}
+          {/* Center: Swarm Preview Button - Mobile Optimized */}
           {systemStatus.modelReady && (
             <button
               onClick={openSwarmPreview}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 text-xs sm:text-sm mx-2 flex-shrink-0"
               title="Launch AI Agent Swarm Preview - See 4 specialists collaborate in real-time"
             >
-              <Brain className="w-4 h-4" />
-              <span className="hidden sm:inline font-semibold">Swarm Preview</span>
-              <Zap className="w-3 h-3 animate-pulse" />
+              <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="font-semibold">Swarm</span>
+              <Zap className="w-2 h-2 sm:w-3 sm:h-3 animate-pulse" />
             </button>
           )}
           
-          {/* Right: Status Indicators */}
-          <div className="flex items-center gap-4">
+          {/* Right: Status Indicators - Mobile Optimized */}
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             
-            {/* Performance Stats */}
+            {/* Performance Stats - Desktop Only */}
             {systemStatus.modelReady && (
-              <div className="hidden md:flex items-center gap-3 text-xs">
+              <div className="hidden lg:flex items-center gap-3 text-xs">
                 <div className="flex items-center gap-1 text-cyan-400">
                   <Clock className="w-3 h-3" />
                   <span>{lastResponseTime}ms</span>
@@ -1205,40 +1194,40 @@ The interface remains functional for demonstration purposes.`,
               </div>
             )}
             
-            {/* Control Buttons */}
-            <div className="flex items-center gap-2">
+            {/* Control Buttons - Mobile Optimized */}
+            <div className="flex items-center gap-1 sm:gap-2">
               <button
                 onClick={() => setUiState(prev => ({ ...prev, showSettings: !prev.showSettings }))}
-                className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-1.5 sm:p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
                 title="Settings"
               >
-                <Settings className="w-4 h-4" />
+                <Settings className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
               
               <button
                 onClick={() => setUiState(prev => ({ ...prev, showModelInfo: !prev.showModelInfo }))}
-                className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-1.5 sm:p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
                 title="Model Information"
               >
-                <Brain className="w-4 h-4" />
+                <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
             </div>
           </div>
         </div>
         
-        {/* System Status Bar */}
+        {/* System Status Bar - Mobile Responsive */}
         {systemStatus.modelReady && (
-          <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
-            <div className="flex items-center gap-4">
+          <div className="mt-2 sm:mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-gray-500 gap-2">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4">
               <span className="flex items-center gap-1">
                 <Shield className="w-3 h-3" />
-                100% Local Processing
+                100% Local
               </span>
               <span className="flex items-center gap-1">
                 <HardDrive className="w-3 h-3" />
                 No Data Transmission
               </span>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 hidden sm:flex">
                 <Cpu className="w-3 h-3" />
                 {systemStatus.capabilities.webgpu ? 'WebGPU' : 'WebAssembly'} Acceleration
               </span>
@@ -1256,36 +1245,36 @@ The interface remains functional for demonstration purposes.`,
         )}
       </div>
       
-      {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      {/* Messages Area - MOBILE OPTIMIZED */}
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 space-y-4 sm:space-y-6 min-h-0">
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`flex gap-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'} ${
+            className={`flex gap-3 sm:gap-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'} ${
               message.role === 'system' ? 'justify-center' : ''
             }`}
           >
-            <div className={`flex gap-4 max-w-[85%] ${
+            <div className={`flex gap-3 sm:gap-4 max-w-[90%] sm:max-w-[85%] ${
               message.role === 'user' ? 'flex-row-reverse' : 'flex-row'
             } ${message.role === 'system' ? 'max-w-full' : ''}`}>
               
-              {/* Avatar */}
+              {/* Avatar - Mobile Optimized */}
               {message.role !== 'system' && (
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${
                   message.role === 'user'
                     ? 'bg-gradient-to-br from-purple-500 to-pink-500'
                     : 'bg-gradient-to-br from-cyan-500 to-purple-500'
                 }`}>
                   {message.role === 'user' ? (
-                    <User className="w-5 h-5 text-white" />
+                    <User className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   ) : (
-                    <Brain className="w-5 h-5 text-white" />
+                    <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   )}
                 </div>
               )}
               
-              {/* Message Content */}
-              <div className={`rounded-xl px-5 py-4 shadow-lg ${
+              {/* Message Content - Mobile Responsive */}
+              <div className={`rounded-xl px-3 sm:px-5 py-3 sm:py-4 shadow-lg ${
                 message.role === 'user'
                   ? 'bg-gradient-to-br from-purple-600 to-pink-600 text-white'
                   : message.role === 'system'
@@ -1293,8 +1282,8 @@ The interface remains functional for demonstration purposes.`,
                     : 'bg-gray-800 text-gray-100 border border-cyan-500/20'
               }`}>
                 
-                {/* Message Text */}
-                <div className="whitespace-pre-wrap leading-relaxed">
+                {/* Message Text - Mobile Optimized */}
+                <div className="whitespace-pre-wrap leading-relaxed text-sm sm:text-base">
                   {message.isTyping ? (
                     <div className="flex items-center gap-2">
                       <div className="flex gap-1">
@@ -1302,17 +1291,17 @@ The interface remains functional for demonstration purposes.`,
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
-                      <span className="text-gray-400 text-sm">Processing...</span>
+                      <span className="text-gray-400 text-xs sm:text-sm">Processing...</span>
                     </div>
                   ) : (
                     message.content
                   )}
                 </div>
                 
-                {/* Message Metadata */}
+                {/* Message Metadata - Mobile Responsive */}
                 {!message.isTyping && message.role !== 'system' && (
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-600/30 text-xs opacity-70">
-                    <div className="flex items-center gap-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-gray-600/30 text-xs opacity-70 gap-2 sm:gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <span>{message.timestamp.toLocaleTimeString()}</span>
                       {message.processingTime && (
                         <span className="flex items-center gap-1">
@@ -1321,7 +1310,7 @@ The interface remains functional for demonstration purposes.`,
                         </span>
                       )}
                       {message.tokens && (
-                        <span className="flex items-center gap-1">
+                        <span className="flex items-center gap-1 hidden sm:flex">
                           <Database className="w-3 h-3" />
                           {message.tokens} tokens
                         </span>
@@ -1347,13 +1336,13 @@ The interface remains functional for demonstration purposes.`,
           </div>
         ))}
         
-        {/* System Error Display */}
+        {/* System Error Display - Mobile Responsive */}
         {systemStatus.error && (
-          <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 p-3 sm:p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+            <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-red-400 mb-1">System Error</h4>
-              <p className="text-sm text-red-300">{systemStatus.error}</p>
+              <h4 className="font-semibold text-red-400 mb-1 text-sm sm:text-base">System Error</h4>
+              <p className="text-xs sm:text-sm text-red-300">{systemStatus.error}</p>
             </div>
           </div>
         )}
@@ -1361,11 +1350,11 @@ The interface remains functional for demonstration purposes.`,
         <div ref={messagesEndRef} />
       </div>
       
-      {/* Enhanced Input Area */}
-      <div className="border-t border-gray-700 p-4 bg-gray-800/50">
-        <div className="flex gap-3 items-end">
+      {/* Enhanced Input Area - MOBILE OPTIMIZED */}
+      <div className="border-t border-gray-700 p-3 sm:p-4 bg-gray-800/50 flex-shrink-0">
+        <div className="flex gap-2 sm:gap-3 items-end">
           
-          {/* Input Field */}
+          {/* Input Field - Mobile Responsive */}
           <div className="flex-1 relative">
             <textarea
               ref={inputRef}
@@ -1377,35 +1366,36 @@ The interface remains functional for demonstration purposes.`,
                   ? "Ask me about autonomous AI, swarm intelligence, privacy, security, or any technical questions..."
                   : "System not ready - initialize to begin conversation..."
               }
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-400 resize-none focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200"
+              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 pr-10 sm:pr-12 text-white placeholder-gray-400 resize-none focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 text-sm sm:text-base min-h-[44px]"
               rows={Math.min(inputMessage.split('\n').length + 1, 4)}
               disabled={isProcessing || !systemStatus.modelReady}
               maxLength={2000}
+              style={{ fontSize: '16px' }} // Prevents zoom on iOS
             />
             
-            {/* Character Count */}
-            <div className="absolute bottom-2 right-2 text-xs text-gray-500">
+            {/* Character Count - Mobile Responsive */}
+            <div className="absolute bottom-1 sm:bottom-2 right-1 sm:right-2 text-xs text-gray-500">
               {inputMessage.length}/2000
             </div>
           </div>
           
-          {/* Send Button */}
+          {/* Send Button - Mobile Optimized */}
           <button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isProcessing || !systemStatus.modelReady}
-            className="px-5 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:from-cyan-400 hover:to-purple-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center min-w-[60px] shadow-lg hover:shadow-cyan-500/25"
+            className="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:from-cyan-400 hover:to-purple-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-cyan-500/25 flex-shrink-0"
           >
             {isProcessing ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
             ) : (
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4 sm:w-5 sm:h-5" />
             )}
           </button>
         </div>
         
-        {/* Status and Shortcuts */}
-        <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
-          <div className="flex items-center gap-4">
+        {/* Status and Shortcuts - Mobile Responsive */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2 sm:mt-3 text-xs text-gray-500 gap-2">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <span className="flex items-center gap-1">
               <div className={`w-1.5 h-1.5 rounded-full ${systemStatus.modelReady ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
               {systemStatus.modelReady ? 'AI System Active' : 'System Offline'}
@@ -1413,16 +1403,17 @@ The interface remains functional for demonstration purposes.`,
             
             {systemStatus.modelReady && (
               <>
-                <span>• Model: {PRODUCTION_MODEL_CONFIG.name}</span>
+                <span className="hidden sm:inline">• Model: {PRODUCTION_MODEL_CONFIG.name}</span>
                 <span>• Privacy: Local Processing</span>
-                <span>• Security: Encrypted</span>
+                <span className="hidden sm:inline">• Security: Encrypted</span>
                 <span className="text-purple-400">• Swarm: 4 Agents Ready</span>
               </>
             )}
           </div>
           
-          <div className="flex items-center gap-2">
-            <span>Enter to send • Shift+Enter for new line • Esc to clear</span>
+          <div className="flex items-center gap-2 text-xs">
+            <span className="hidden sm:inline">Enter to send • Shift+Enter for new line • Esc to clear</span>
+            <span className="sm:hidden">Enter: send • Esc: clear</span>
           </div>
         </div>
       </div>
