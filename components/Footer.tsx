@@ -17,10 +17,10 @@ export default function Footer() {
       { href: 'https://github.com/moonrunnerkc', label: 'GitHub', external: true },
     ],
     edgeTech: [
-      { href: '/blackbox-mind', label: 'Blackbox Mind', external: false },
-      { href: '/sentient-os', label: 'Sentient OS', external: false },
-      { href: '/belief-ecology', label: 'Belief Ecology', external: false },
-      { href: '/local-agents', label: 'Offline Chatbots', external: false },
+      { href: 'https://github.com/moonrunnerkc/belief-ecology', label: 'Belief Ecology', external: true },
+      { href: 'https://github.com/moonrunnerkc/sentinel-os-core', label: 'Sentinel OS', external: true },
+      { href: 'https://github.com/moonrunnerkc/killgrid-ai', label: 'KillGrid AI', external: true },
+      { href: 'https://github.com/moonrunnerkc/chronocodex', label: 'ChronoCodex', external: true },
     ],
   };
 

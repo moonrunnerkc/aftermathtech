@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { 
   Brain, Target, Rocket, Shield, Code, Calendar, GitBranch, Cpu, Database, 
   Zap, Eye, Globe, Lock, Sparkles, Satellite, Bot, Network, Microscope,
-  Terminal, HardDrive, Users, Mail, Github, Linkedin, Twitter
+  Terminal, HardDrive, Users, Mail, Github, Linkedin
 } from 'lucide-react';
 import { generatePageMetadata } from '@/lib/metadata';
 
@@ -467,11 +467,10 @@ export default function AboutPage() {
                 AFTERMATH
               </div>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                Building the next generation of offline-first, autonomous AI systems. 
-                Empowering developers and researchers with tools that work anywhere, anytime.
+                Architecting offline-first, autonomous AI systems that don't phone home. You own it. You run it. You win.
               </p>
               <p className="text-xs text-gray-500">
-                Aftermath Technologies LLC<br />
+                Aftermath Technologies Ltd<br />
                 Denver, Colorado
               </p>
             </div>
@@ -481,24 +480,22 @@ export default function AboutPage() {
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <div className="space-y-2 text-sm">
                 <a href="/about" className="text-gray-400 hover:text-cyan-400 transition-colors block">About</a>
-                <a href="/blog" className="text-gray-400 hover:text-cyan-400 transition-colors block">Blog</a>
                 <a href="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors block">Contact</a>
-                <a href="/projects" className="text-gray-400 hover:text-cyan-400 transition-colors block">Projects</a>
               </div>
             </div>
 
             {/* Resources */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Resources</h4>
+              <h4 className="text-white font-semibold mb-4">Edge Tech</h4>
               <div className="space-y-2 text-sm">
-                <a href="https://github.com/moonrunnerkc" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">
-                  Documentation
+                <a href="https://github.com/moonrunnerkc/belief-ecology" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">
+                  Belief Ecology
                 </a>
-                <a href="https://github.com/moonrunnerkc" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">
-                  GitHub
+                <a href="https://github.com/moonrunnerkc/sentinel-os-core" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">
+                  Sentinel OS
                 </a>
-                <a href="/blog" className="text-gray-400 hover:text-cyan-400 transition-colors block">Research</a>
-                <a href="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors block">Support</a>
+                <a href="https://github.com/moonrunnerkc/killgrid-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">KillGrid AI</a>
+                <a href="https://github.com/moonrunnerkc/chronocodex" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors block">ChronoCodex</a>
               </div>
             </div>
 
@@ -515,20 +512,12 @@ export default function AboutPage() {
                   <Github className="w-5 h-5 text-gray-400 group-hover:text-white" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/bradkinnard"
+                  href="https://www.linkedin.com/in/brad-kinnard/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors group"
                 >
                   <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                </a>
-                <a
-                  href="https://twitter.com/AftermathTech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-purple-600 rounded-lg flex items-center justify-center transition-colors group"
-                >
-                  <Twitter className="w-5 h-5 text-gray-400 group-hover:text-white" />
                 </a>
                 <a
                   href="mailto:bradkinnard@proton.me"
@@ -543,8 +532,7 @@ export default function AboutPage() {
           {/* Copyright */}
           <div className="border-t border-gray-800 pt-8 text-center">
             <p className="text-gray-500 text-sm">
-              © 2024 Aftermath Technologies LLC. All rights reserved. 
-              <span className="text-cyan-400 ml-2">Built with autonomous intelligence.</span>
+              © 2025 Aftermath Technologies Ltd. Built by humans. Powered by offline AI.
             </p>
           </div>
         </div>
