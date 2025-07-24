@@ -212,7 +212,7 @@ const Header: React.FC = () => {
             <div className="hidden lg:flex items-center gap-3 xl:gap-4">
               {/* GitHub link */}
               <a
-                href="https://github.com/aftermathtech"
+                href="https://github.com/moonrunnerkc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-gray-400 hover:text-cyan-400 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-cyan-500/5"
@@ -294,7 +294,7 @@ const Header: React.FC = () => {
               <div className="pt-6 mt-6 border-t border-cyan-500/20 space-y-3">
                 {/* GitHub link in mobile menu */}
                 <a
-                  href="https://github.com/aftermathtech"
+                  href="https://github.com/moonrunnerkc"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/5 rounded-lg transition-all min-h-[50px]"
