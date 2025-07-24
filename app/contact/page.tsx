@@ -16,18 +16,12 @@ export const metadata: Metadata = {
     url: '/contact',
     images: [
       {
-        url: '/og-contact.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Contact Aftermath Technologies'
       }
     ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact Aftermath Technologies',
-    description: 'Discuss autonomous AI systems with Bradley Ryan Kinnard',
-    images: ['/og-contact.jpg']
   }
 }
 
@@ -41,7 +35,7 @@ const contactInfo = {
     bio: 'Pioneering autonomous AI systems and offline-first architectures'
   },
   company: {
-    name: 'Aftermath Technologies LLC',
+    name: 'Aftermath Technologies Ltd',
     location: 'Denver, Colorado',
     timezone: 'Mountain Time (MT)',
     founded: '2024',
@@ -80,8 +74,7 @@ const contactInfo = {
     }
   ],
   socialMedia: {
-    linkedin: 'https://www.linkedin.com/in/bradkinnard',
-    twitter: 'https://twitter.com/AftermathTech',
+    linkedin: 'https://www.linkedin.com/in/brad-kinnard/',
     github: 'https://github.com/moonrunnerkc'
   },
   businessInfo: {
@@ -210,6 +203,7 @@ export default function ContactPage() {
               {contactInfo.contactMethods.map((method, index) => {
                 const delay = index * 0.1
                 const isEmail = method.method === 'email'
+                const isGitHub = method.method === 'github'
                 
                 return (
                   <div
@@ -276,7 +270,7 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    {/* Action button for email */}
+                    {/* Action button */}
                     {isEmail && (
                       <div className="mt-6">
                         <a
@@ -286,6 +280,23 @@ export default function ContactPage() {
                           <span>Send Email</span>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </a>
+                      </div>
+                    )}
+
+                    {/* GitHub action button */}
+                    {isGitHub && (
+                      <div className="mt-6">
+                        <a
+                          href="https://github.com/moonrunnerkc"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-medium transition-all"
+                        >
+                          <span>View GitHub</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
                         </a>
                       </div>
@@ -313,12 +324,10 @@ export default function ContactPage() {
                   AFTERMATH
                 </div>
                 <p className="text-gray-400 leading-relaxed mb-6">
-                  Pioneering autonomous AI systems that operate offline-first, 
-                  respect privacy, and put the power of artificial intelligence 
-                  directly into the hands of users.
+                  Architecting offline-first, autonomous AI systems that don't phone home. You own it. You run it. You win.
                 </p>
                 <div className="space-y-2 text-sm text-gray-500">
-                  <p>Aftermath Technologies LLC</p>
+                  <p>Aftermath Technologies Ltd</p>
                   <p>Denver, Colorado • Mountain Time</p>
                   <p>Founded 2024</p>
                 </div>
@@ -362,13 +371,11 @@ export default function ContactPage() {
                     </svg>
                   </a>
                   <a
-                    href={contactInfo.socialMedia.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800 hover:bg-purple-600 rounded-lg flex items-center justify-center transition-colors group"
+                    href="mailto:bradkinnard@proton.me"
+                    className="w-12 h-12 bg-gray-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors group"
                   >
-                    <svg className="w-6 h-6 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <svg className="w-6 h-6 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </a>
                 </div>
@@ -393,8 +400,7 @@ export default function ContactPage() {
             {/* Copyright */}
             <div className="border-t border-gray-800/50 mt-12 pt-8 text-center">
               <p className="text-gray-500 text-sm">
-                © 2024 Aftermath Technologies LLC. All rights reserved.
-                <span className="text-cyan-400 ml-2">Built with autonomous intelligence.</span>
+                © 2025 Aftermath Technologies Ltd. Built by humans. Powered by offline AI.
               </p>
             </div>
           </div>
